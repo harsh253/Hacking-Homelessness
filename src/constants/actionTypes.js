@@ -1,0 +1,1 @@
+export const ALL_ORGS_RECEIVED = 'ALL_ORGS_RECEIVED'

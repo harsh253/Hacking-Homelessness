@@ -1,0 +1,60 @@
+.page-container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    height: 100%;
+}
+
+.form-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+.card-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    /* width: 50%; */
+}
+
+.loader{
+    margin: 150px 0
+}
+
+
+.input-field{
+    width: 40%;
+}
+
+.input-field-style{
+    border-radius: 3px !important
+}
+
+.input-field-style:focus{
+    box-shadow: 0 0 2px 1px #007bff !important;
+}
+
+.in{
+    margin: 0 20px;
+    padding: 5px 0
+}
+
+.search-btn{
+    margin-left: auto;
+    margin-right: auto;
+    height: 3%;
+    padding: 1px 25px !important ;
+    margin-top: 5px
+}
+
+@media screen and (max-width: 992px){
+    .form-container{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+}

@@ -1,0 +1,46 @@
+.custom-card{
+    border: 1px solid lightgray;
+    padding: 10px 25px;
+    max-width: 360px;
+    margin-right: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+ 
+}
+
+.custom-card:hover{
+    animation-name: card;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards
+}
+
+@keyframes card {
+    from {box-shadow: 0 0 0 0 transparent;}
+    to {box-shadow: 0 0 3px 1px lightgray;;}
+  }
+
+.card-text{
+    margin-top: 20px;
+    /* height: 165px; */
+}
+
+
+
+.footer{
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 1300px){
+    .custom-card{
+        max-width: 1200px;
+    }
+}
+
+@media screen and (min-width: 1300px){
+    .card-text{
+        margin-top: 20px;
+        height: 165px;
+    }
+}
