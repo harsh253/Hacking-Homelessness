@@ -1,3 +1,9 @@
+.custom-nav-style{
+    border-bottom: 1px solid lightgray;
+    background: white;
+    box-shadow: 0 0 2px 1px lightgray;
+}
+
 .page-container{
     width: 90%;
     margin-left: auto;
@@ -5,6 +11,14 @@
     margin-top: 80px;
     margin-bottom: 40px;
     height: 100%;
+}
+
+.ideas-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 60px;
 }
 
 .form-container{
@@ -20,6 +34,56 @@
     justify-content: flex-start;
     flex-flow: row wrap;
     /* width: 50%; */
+}
+
+.org-info{
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin-top: 30px;
+}
+
+.org-desc{
+    margin-top: 20px;
+    max-height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden
+}
+
+.org-details-container{
+    border-bottom: 1px solid lightgray;
+}
+
+.share-info{
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: row wrap;
+    margin-top: 20px;
+}
+
+.custom-icon{
+    margin:0 10px;
+    font-size: 20px 
+}
+
+
+.custom-icon:hover{
+    cursor: pointer; 
+}
+
+.fb-icon{
+    color: #3b5998;
+    
+}
+
+.twitter-icon{
+    color: #00acee
+}
+
+.org-table{
+    margin-top: 30px;
+    border: 1px solid lightgray;
+    box-shadow: 0 2px 5px 1px lightgray;
 }
 
 .loader{
@@ -52,9 +116,19 @@
     margin-top: 5px
 }
 
+.idea-share-btn{
+    height: 3%;
+    padding: 1px 25px !important ;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    display: none;
+  }
+
 @media screen and (max-width: 992px){
     .form-container{
         width: 100%;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 }

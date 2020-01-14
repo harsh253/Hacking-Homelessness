@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Layout from '../views/Layout';
+import Layout from './Layout';
 import { Button,FormGroup, Input } from 'reactstrap';
 import '../../styles/organizations.css'
 import OrganizationCard from '../presentations/OrganizationCard';

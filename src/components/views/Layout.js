@@ -39,7 +39,7 @@ class Layout extends Component {
     render(){
         return(
             <div className="layout-container">
-            <Navbar fixed="top" color="light" light expand="md">
+            <Navbar fixed="top" color="" className="custom-nav-style" light expand="md">
               <NavbarBrand href="/">Hacking Homelessness</NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
@@ -52,10 +52,10 @@ class Layout extends Component {
                       Become A Contributor
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>
+                      <DropdownItem onClick={()=>window.location.assign('/donate')}>
                         Donation
                       </DropdownItem>
-                      <DropdownItem>
+                      <DropdownItem onClick={()=>window.location.assign('/ideas')}>
                         Ideas
                       </DropdownItem>
                     </DropdownMenu>

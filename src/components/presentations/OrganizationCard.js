@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Card, CardTitle, CardDeck, CardText} from 'reactstrap';
 import '../../styles/organizationCard.css'
 
 class OrganizationCard extends Component{
     render(){
         return(
-            <div className="custom-card">
+            <div onClick={()=>window.location.assign('/organization/:id')} className="custom-card">
                 <h3>{this.props.name}</h3>
                 <p className="card-text">{this.props.desc}</p>
                 <div className="footer">
