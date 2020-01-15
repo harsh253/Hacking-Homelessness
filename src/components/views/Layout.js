@@ -1,4 +1,5 @@
 import React, {Component, useState} from 'react';
+import { withRouter } from 'react-router-dom'
 import { 
     Container, 
     Row, 
@@ -17,7 +18,6 @@ import {
     NavbarText
 } from 'reactstrap';
 import '../../styles/layout.css'
-import {Link} from 'react-router-dom'
 
 class Layout extends Component {
     constructor(props){
@@ -45,23 +45,23 @@ class Layout extends Component {
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="mr-auto" navbar>
                   <NavItem>
-                    <NavLink href="/">Organizations</NavLink>
+                    <NavLink onClick={()=>this.props.history.push('/')}>Organizations</NavLink>
                   </NavItem>
                   <UncontrolledDropdown nav inNavbar>
                     <DropdownToggle nav caret>
                       Become A Contributor
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem onClick={()=>window.location.assign('/donate')}>
+                      <DropdownItem onClick={()=>this.props.history.push('/donate')}>
                         Donation
                       </DropdownItem>
-                      <DropdownItem onClick={()=>window.location.assign('/ideas')}>
+                      <DropdownItem onClick={()=>this.props.history.push('/ideas')}>
                         Ideas
                       </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                   <NavItem>
-                    <NavLink href="/news">News</NavLink>
+                    <NavLink onClick={()=>this.props.history.push('/news')}>News</NavLink>
                   </NavItem>
                 </Nav>
                 <NavLink href="/login">Log In</NavLink>
@@ -72,4 +72,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default withRouter(Layout);

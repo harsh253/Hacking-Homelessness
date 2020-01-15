@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import Donation from './components/views/Donation';
 import Ideas from './components/views/Ideas';
+import IdeaDetails from './components/container/IdeaDetails'
 // import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fab)
@@ -22,7 +23,8 @@ class App extends Component{
           <Route exact path='/' component = {Organizations}></Route>
           <Route path='/organization/:id' component={OrganizationDetail}></Route>
           <Route path='/donate' component={Donation}></Route>
-          <Route path='/ideas' component={Ideas}></Route>
+          <Route exact path='/ideas' component={Ideas}></Route>
+          <Route path='/ideas/:id' component={IdeaDetails}></Route>
         </BrowserRouter>
       </Provider>
     )

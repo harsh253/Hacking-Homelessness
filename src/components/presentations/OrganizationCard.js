@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import '../../styles/organizationCard.css'
+import {withRouter, Link} from 'react-router-dom';
+
 
 class OrganizationCard extends Component{
+    
+
     render(){
+        console.log(this.props)
         return(
-            <div onClick={()=>window.location.assign('/organization/:id')} className="custom-card">
+            <div onClick={()=> this.props.history.push(`organization/${this.props.id}`)}className="custom-card">
                 <h3>{this.props.name}</h3>
-                <p className="card-text">{this.props.desc}</p>
+                <p className="card-text">{this.props.teaser}</p>
                 <div className="footer">
                     <h6><b>Established</b> : {this.props.estd}</h6>
                     <h6><b>Location</b>: {this.props.location}</h6>
@@ -17,4 +22,4 @@ class OrganizationCard extends Component{
 
 }
 
-export default OrganizationCard
+export default (OrganizationCard)

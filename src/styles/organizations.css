@@ -80,10 +80,14 @@
     color: #00acee
 }
 
-.org-table{
+.org-table, .ideas-table{
     margin-top: 30px;
     border: 1px solid lightgray;
     box-shadow: 0 2px 5px 1px lightgray;
+}
+
+.ideas-table>tbody>tr{
+    cursor: pointer;
 }
 
 .loader{

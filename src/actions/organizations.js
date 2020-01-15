@@ -6,3 +6,17 @@ export function orgsReceived(orgs){
         orgs
     }
 }
+
+export function orgDetailsReceived(details){
+    return{
+        type: actionTypes.ORG_DETAILS_RECEIVED,
+        details
+    }
+}
+
+export function donationOrgsReceived(donationOrgs){
+    return{
+        type: actionTypes.DONATION_ORGS_RECEIVED,
+        donationOrgs
+    }
+}
