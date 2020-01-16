@@ -4,6 +4,23 @@ import OrganizationCard from './OrganizationCard';
 
 class OrganizationTable extends Component{
     render(){
+        const {data} = this.props
+        
+        const orgs = data.map((org,i)=>{
+            return(
+                <tr key={i}>
+                    <td>{org.name}</td>
+                    <td>{org.location}</td>
+                    <td><a href="#">{org.website}</a></td>
+                    <td><a href={org.donation}>Donate</a></td>
+                </tr>
+            )
+        })
+
+        let tableData = orgs;
+
+
+
         return(
             <Table className="org-table" hover responsive>
                 <thead>
@@ -15,30 +32,7 @@ class OrganizationTable extends Component{
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Organization A</td>
-                    <td>London</td>
-                    <td><a href="#">www.organizationA.com</a></td>
-                    <td><a href="#">Donate</a></td>
-                    </tr>
-                    <tr>
-                    <td>Organization B</td>
-                    <td>India</td>
-                    <td><a href="#">www.organizationB.com</a></td>
-                    <td><a href="#">Donate</a></td>
-                    </tr>
-                    <tr>
-                    <td>Organization C</td>
-                    <td>London</td>
-                    <td><a href="#">www.organizationC.com</a></td>
-                    <td><a href="#">Donate</a></td>
-                    </tr>
-                    <tr>
-                    <td>Organization D</td>
-                    <td>India</td>
-                    <td><a href="#">www.organizationD.com</a></td>
-                    <td><a href="#">Donate</a></td>
-                    </tr>
+                    {tableData}
                 </tbody>
             </Table>
         )
