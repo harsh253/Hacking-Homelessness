@@ -2,6 +2,10 @@
     margin-bottom: 30px;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
 
 @media screen and (max-width: 992px){
 

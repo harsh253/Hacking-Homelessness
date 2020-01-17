@@ -1,9 +1,10 @@
 import {orgsReceived, orgDetailsReceived, donationOrgsReceived} from './organizations';
-import {ideasReceived} from './ideas';
+import {ideasReceived, ideaDetailsReceived} from './ideas';
 
 export {
     orgsReceived,
     orgDetailsReceived,
     donationOrgsReceived,
-    ideasReceived
+    ideasReceived,
+    ideaDetailsReceived
 };

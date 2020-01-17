@@ -40,7 +40,7 @@ class Layout extends Component {
         return(
             <div className="layout-container">
             <Navbar fixed="top" color="" className="custom-nav-style" light expand="md">
-              <NavbarBrand href="/">Hacking Homelessness</NavbarBrand>
+              <NavbarBrand>Hacking Homelessness</NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
               <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="mr-auto" navbar>
@@ -64,7 +64,7 @@ class Layout extends Component {
                     <NavLink onClick={()=>this.props.history.push('/news')}>News</NavLink>
                   </NavItem>
                 </Nav>
-                <NavLink href="/login">Log In</NavLink>
+                <NavLink style={{paddingLeft:0, paddingRight:0, color:'#007bff'}}onClick={()=>this.props.history.push('/login')}>Log In</NavLink>
               </Collapse>
             </Navbar>
           </div>

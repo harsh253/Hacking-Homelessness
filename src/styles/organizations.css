@@ -1,3 +1,11 @@
+.custom-jumbotron{
+    background-color: white ;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
 .custom-nav-style{
     border-bottom: 1px solid lightgray;
     background: white;
@@ -5,10 +13,10 @@
 }
 
 .page-container{
-    width: 90%;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-bottom: 40px;
     height: 100%;
 }
@@ -19,6 +27,12 @@
     flex-wrap: wrap;
     margin-top: 30px;
     margin-bottom: 60px;
+}
+
+.news-container{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
 }
 
 .form-container{
@@ -33,7 +47,6 @@
     display: flex;
     justify-content: flex-start;
     flex-flow: row wrap;
-    /* width: 50%; */
 }
 
 .org-info{
@@ -125,6 +138,74 @@
     padding: 1px 25px !important ;
 }
 
+.author-container{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px
+}
+
+.ideas-detail-container{
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    margin: 8px 0px
+}
+
+.idea-description-container>span, .reply-btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-detail-container{
+    border-top: 1px solid lightgray;
+    margin: 8px 0px
+}
+
+.comments-container{
+    margin-top: 10px
+}
+
+.comments-container>div>p{
+    margin-left: 15px
+}
+
+.comments-description{
+    margin-top: 50px
+}
+
+.reply-box-container{
+    margin-top: 10px;
+}
+
+.idea-details-parent-container{
+    margin-top: 30px
+}
+
+.reply-box-container>textarea{
+    width:100%;
+    margin-bottom: 10px;
+    height: 100px !important
+}
+
+.reply-btn{
+    padding: 1px 45px !important ;
+}
+
+.box-toggle{
+    height: 0px;
+    display: none;
+}
+
+.cancel-toggle{
+    display: none;
+}
+
+.cancel{
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 4px
+}
+
+
 ::-webkit-scrollbar {
     width: 2px;
     display: none;
@@ -134,5 +215,15 @@
     .form-container{
         width: 100%;
         justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 1250px){
+    .page-container{
+    margin-left: 15px;
+    margin-right: 15px;
+    }
+    .card-container{
+        justify-content: center;
     }
 }

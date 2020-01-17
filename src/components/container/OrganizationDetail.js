@@ -27,7 +27,7 @@ class OrganizationDetail extends Component{
         if(Object.keys(organizationDetails).length && !orgDetailsLoading){
             content = (
                 <div>
-                    <OrganizationDesc data={orgDetails}></OrganizationDesc>
+                    <OrganizationDesc data={organizationDetails}></OrganizationDesc>
                 </div>
             )
         }else if(Object.keys(organizationDetails).length === 0 && !orgDetailsLoading){

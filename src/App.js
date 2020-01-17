@@ -11,7 +11,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import Donation from './components/views/Donation';
 import Ideas from './components/views/Ideas';
 import IdeaDetails from './components/container/IdeaDetails'
-// import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import News from './components/views/News'
 
 library.add(fab)
 
@@ -25,6 +25,7 @@ class App extends Component{
           <Route path='/donate' component={Donation}></Route>
           <Route exact path='/ideas' component={Ideas}></Route>
           <Route path='/ideas/:id' component={IdeaDetails}></Route>
+          <Route exact path='/news' component={News}></Route>
         </BrowserRouter>
       </Provider>
     )
