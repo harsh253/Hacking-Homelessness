@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Input, Button} from 'reactstrap';
+import {connect} from 'react-redux';
 
 class IdeaDesc extends Component{
 
@@ -8,25 +9,45 @@ class IdeaDesc extends Component{
         this.state = {
             boxToggle: 'box-toggle',
             btnText: 'Reply',
-            toggleCancel: 'cancel-toggle'
+            toggleCancel: 'cancel-toggle',
+            commentBody: '',
+            error:{
+                message:''
+            }
         }
     }
 
-    async openTextBox(){
-        if(this.state.boxToggle === 'box-toggle'){
-            this.setState({
-                boxToggle: '',
-                btnText: 'Post',
-                toggleCancel: ''
-            })
-        }else{
-            // await alert('as'); call fetch here
-            this.setState({
-                boxToggle: 'box-toggle',
-                btnText: 'Reply',
-                toggleCancel: 'cancel-toggle'
-            })
+    handleChange(e){
+        this.setState({
+            commentBody : e.target.value
+        })
+    }
 
+    async openTextBox(name,accessToken){
+        if(name.length>0 && accessToken){
+            if(this.state.boxToggle === 'box-toggle'){
+                this.setState({
+                    boxToggle: '',
+                    btnText: 'Post',
+                    toggleCancel: ''
+                })
+            }else{
+                // await alert('as'); call fetch here
+                this.setState({
+                    boxToggle: 'box-toggle',
+                    btnText: 'Reply',
+                    toggleCancel: 'cancel-toggle',
+                    commentBody: ''
+                })
+
+            }
+        }else{
+            await this.setState({
+                error:{
+                    message: 'Please Login to reply'
+                }
+            })
+            alert(this.state.error.message)
         }
     }
 
@@ -48,7 +69,7 @@ class IdeaDesc extends Component{
     }
 
     render(){
-        let {data} = this.props
+        let {data,name,accessToken} = this.props
         const description = data.description.map((para,i)=>{
             return(
                 <p key={i}>{para}</p>
@@ -77,11 +98,11 @@ class IdeaDesc extends Component{
                         </div>
                     </div>
                     <div className={"reply-box-container " + this.state.boxToggle} >
-                        <Input type="textarea"></Input>
+                        <Input type="textarea" value={this.state.commentBody} name="comment" onChange={this.handleChange.bind(this)}></Input>
                     </div>
                     <div className={"reply-btn-container"}>
                         <small onClick={()=>this.cancelPost()} className={"cancel "+ this.state.toggleCancel}>Cancel</small>
-                        <Button type="button" onClick={()=>this.openTextBox()} className="reply-btn" color="primary">{this.state.btnText}</Button>
+                        <Button type="button" onClick={()=>this.openTextBox(name,accessToken)} className="reply-btn" color="primary">{this.state.btnText}</Button>
                     </div>
                 </div>
 
@@ -98,4 +119,11 @@ class IdeaDesc extends Component{
     }
 }
 
-export default IdeaDesc;
+function mapStateToProps(state){
+    return{
+        name: state.authReducer.name,
+        accessToken: state.authReducer.accessToken
+    }
+}
+
+export default connect(mapStateToProps)(IdeaDesc);
