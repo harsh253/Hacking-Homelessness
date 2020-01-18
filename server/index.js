@@ -1,0 +1,83 @@
+const express = require('express')
+const mongodb = require('mongodb')
+const mongoose = require('mongoose')
+const Organization = require('./models/Organization.js')
+const Ideas = require('./models/Ideas.js')
+
+
+const app = express()
+const port = 4000
+app.use(express.json())
+
+
+
+app.get('/api/orgs',(req,res)=>{
+	Organization.find({}).then((orgs)=>{
+		// res.send(orgs)
+		// res.status(200)
+		res.json({
+			status: 200,
+			data: orgs
+		})
+
+	}).catch((e)=>{
+		res.json({
+			status:500,
+			error:"Internal server error"
+		})
+	})
+})
+
+app.get('/api/ideas',(req,res)=>{
+	Ideas.find({}).then((ideas)=>{
+		// res.send(orgs)
+		// res.status(200)
+		res.json({
+			status: 200,
+			data: ideas
+		})
+
+	}).catch((e)=>{
+		res.json({
+			status:500,
+			error:"Internal server error"
+		})
+	})
+})
+
+
+app.post('/api/idea',(req,res)=>{
+		const newIdea = new Ideas(req.body)
+		newIdea.save().then(()=>{
+			res.json({
+				status:200
+			})
+		}).catch((e)=>{
+			res.json({
+				error:e
+			})
+		})
+})
+
+app.get('/api/idea/:id',(req,res)=>{
+	const id = req.params.id
+	Ideas.findById(id, function (err,result){
+		if(result){
+			return res.json({
+				data:result
+			})
+		}
+		else
+		{
+			return res.json({
+				error:err
+			})
+		}
+
+	})
+})
+		
+
+app.listen(port, () => {
+    console.log('Server is up on port ' + port)
+})
