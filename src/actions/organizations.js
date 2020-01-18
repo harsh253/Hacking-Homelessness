@@ -20,3 +20,11 @@ export function donationOrgsReceived(donationOrgs){
         donationOrgs
     }
 }
+
+export function filterOrgs(filteredOrgs,searching){
+    return{
+        type: actionTypes.FILTER_ORGS,
+        filteredOrgs,
+        searching
+    }
+}
