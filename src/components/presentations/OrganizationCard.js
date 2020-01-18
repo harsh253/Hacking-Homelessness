@@ -7,9 +7,8 @@ class OrganizationCard extends Component{
     
 
     render(){
-        console.log(this.props)
         return(
-            <div onClick={()=> this.props.history.push(`organization/${this.props.id}`)}className="custom-card">
+            <div onClick={()=> this.props.history.push(`organization/${this.props.id}`)} className="custom-card">
                 <h3>{this.props.name}</h3>
                 <p className="card-text">{this.props.teaser}</p>
                 <div className="footer">

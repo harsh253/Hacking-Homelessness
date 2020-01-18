@@ -6,3 +6,10 @@ export function ideasReceived(ideas){
         ideas
     }
 }
+
+export function ideaDetailsReceived(details){
+    return{
+        type: actionTypes.IDEA_DETAILS_RECEIVED,
+        details
+    }
+}

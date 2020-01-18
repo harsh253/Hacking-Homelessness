@@ -2,6 +2,33 @@
     margin-bottom: 30px;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
+.login-services{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.login-services>button{
+    margin-right: 20px;
+}
+
+.fb-login-btn{
+    background-color: #3b5998 !important;
+    border-color: #3b5998 !important;
+}
+
+.google-login-btn{
+    background-color: #db4437 !important;
+    border-color: #db4437 !important;
+}
+
+.fb-login-icon, .google-login-icon{
+    margin-right: 5px;
+}
 
 @media screen and (max-width: 992px){
 
