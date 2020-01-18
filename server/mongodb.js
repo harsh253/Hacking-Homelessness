@@ -1,4 +1,4 @@
-const mongodb = require('mongodb')
+/*const mongodb = require('mongodb')
 const organizationArray = require('./GetOrgsData')
 console.log(organizationArray.arr)
 
@@ -30,3 +30,4 @@ MongoClient.connect(connectionURL,{useUnifiedTopology: true},(error,client) =>{
 
 
 	})
+*/

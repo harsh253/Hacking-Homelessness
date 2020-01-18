@@ -71,6 +71,23 @@ var organizations = [
 
 ]
 
+async function fetchApi(url){
+    try{
+        let response = await fetch(url)
+         if(response && response.ok){
+            let data =  await response.json()
+            return data
+        }else{
+            let error = await response
+            console.log(error.statusText)
+            return error
+        }
+    }
+    catch(err){
+        console.log(err)
+        return err
+    }
+}
 
 class OrgList extends Component{
 
@@ -86,8 +103,14 @@ class OrgList extends Component{
         
     }
 
-    componentDidMount(){
-        store.dispatch(actions.orgsReceived(organizations))
+    async componentDidMount(){
+        let response = await fetchApi('/api/orgs')
+        if(!response.error){
+            console.log(response.data)
+            store.dispatch(actions.orgsReceived(response.data))
+        }else{
+            console.log(response.error)
+        }
     }
 
     async searchOrg(orgs,event){
