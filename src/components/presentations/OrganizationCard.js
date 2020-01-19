@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import '../../styles/organizationCard.css'
-import {withRouter, Link} from 'react-router-dom';
 
 
 class OrganizationCard extends Component{

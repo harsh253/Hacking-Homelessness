@@ -5,70 +5,137 @@ import {connect} from 'react-redux';
 import store from '../../store/store';
 import * as actions from '../../actions';
 import OrganizationTable from '../presentations/OrganizationTable';
+import fetchApi from '../../utilities/fetchApi';
 
-var organizations = [
-    {
-        name: 'Organization A',
-        description: 'Lorem olor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2005,
-        location: 'London',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    },
-    {
-        name: 'Organization B',
-        description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2015,
-        location: 'India',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    },
-    {
-        name: 'Organization c',
-        description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2017,
-        location: 'India',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    },
-    {
-        name: 'Organization c',
-        description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2017,
-        location: 'India',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    },
-    {
-        name: 'Organization c',
-        description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2017,
-        location: 'India',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    },
-    {
-        name: 'Organization c',
-        description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
-        established: 2017,
-        location: 'India',
-        website: 'www.org.com',
-        donation: 'www.org.com/donate'
-    }
+// var organizations = [
+//     {
+//         name: 'Organization A',
+//         description: 'Lorem olor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2005,
+//         location: 'London',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     },
+//     {
+//         name: 'Organization B',
+//         description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2015,
+//         location: 'India',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     },
+//     {
+//         name: 'Organization c',
+//         description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2017,
+//         location: 'India',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     },
+//     {
+//         name: 'Organization c',
+//         description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2017,
+//         location: 'India',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     },
+//     {
+//         name: 'Organization c',
+//         description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2017,
+//         location: 'India',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     },
+//     {
+//         name: 'Organization c',
+//         description: 'Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.Lorem ipsum dolor sit amet, diam consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
+//         established: 2017,
+//         location: 'India',
+//         website: 'www.org.com',
+//         donation: 'www.org.com/donate'
+//     }
 
-]
+// ]
 
 class OrgDonations extends Component{
 
+    constructor(props){
+        super(props);
+        this.state={
+            formDetails:{
+                org: '',
+                select: 'All Countries'
+            }
+        }
+    }
+
+    // async handleChange(orgs,event){
+    //     var details = Object.assign({}, this.state.formDetails)
+    //     details[event.target.name] = event.target.value.trim()
+    //     await this.setState({
+    //         formDetails: details
+    //     })
+
+    //     //search(orgs,event,state)
+    // }
+
+    async searchOrg(orgs,event){
+        var details = Object.assign({}, this.state.formDetails)
+        details[event.target.name] = event.target.value.trim()
+        await this.setState({
+            formDetails: details
+        })
+        let filteredOrgs = orgs;
+        let searching = true
+        var self = this
+        if(this.state.formDetails.org === '' && this.state.formDetails.select === 'All Countries'){
+            searching = false
+        }else if(this.state.formDetails.select!=='All Countries' && this.state.formDetails.org === '' ){
+            filteredOrgs = orgs.filter(function(org){
+                return org.location.toLowerCase().search(
+                    self.state.formDetails.select.toLowerCase()) !== -1;
+                })
+        }else if(this.state.formDetails.org !== '' && this.state.formDetails.select === 'All Countries'){
+            filteredOrgs = orgs.filter(function(org){
+                return org.name.toLowerCase().search(
+                    self.state.formDetails.org.toLowerCase()) !== -1;
+                })
+        }else{
+            filteredOrgs = orgs.filter(function(org){
+                return org.name.toLowerCase().search(
+                    self.state.formDetails.org.toLowerCase()) !== -1;
+                }).filter(function(org){
+                return org.location.toLowerCase().search(
+                    self.state.formDetails.select.toLowerCase()) !== -1;
+                })
+            }
+        store.dispatch(actions.filterDonationOrgs(filteredOrgs,searching))
+    }
+
     async componentDidMount(){
-        await store.dispatch(actions.donationOrgsReceived(organizations))
+        let response = await fetchApi('/api/orgs', "GET");
+        if(!response.error){
+            await store.dispatch(actions.donationOrgsReceived(response.data))
+        }else{
+            console.log(response.error)
+        }
+        
     }
 
     render(){
-        var {donationOrgs, donationOrgsLoading} = this.props
+        var {donationOrgs, donationOrgsLoading, filteredOrgs, searching} = this.props
         let content;
 
-        if(donationOrgs.length>0 && !donationOrgsLoading){
+        if(filteredOrgs.length>0 && !donationOrgsLoading && donationOrgs.length>0 && searching){
+            content = (
+                <div>
+                    <OrganizationTable data={filteredOrgs}></OrganizationTable>
+                </div>
+            )
+        }
+        else if(donationOrgs.length>0 && !donationOrgsLoading && !searching){
             content = (
                 <div>
                     <OrganizationTable data={donationOrgs}></OrganizationTable>
@@ -80,6 +147,13 @@ class OrgDonations extends Component{
                     No orgs accepting donation
                 </div>
             )
+        }else if(searching && filteredOrgs.length===0 && !donationOrgsLoading){
+            content = (
+                <div>
+                    No such organization found
+                </div>
+            )
+
         }else if(donationOrgsLoading){
             content = (
                 <div className="text-center loader">
@@ -93,11 +167,11 @@ class OrgDonations extends Component{
                 <h3>Donate To An Organization</h3>
                 <div className="form-container">
                     <FormGroup className="input-field">
-                        <Input type="text" className="input-field-style" placeholder="Search for an organization"></Input>
+                        <Input type="text" name="org" onChange={(event) => this.searchOrg(donationOrgs, event)}className="input-field-style" placeholder="Search for an organization"></Input>
                     </FormGroup>
                     <span className="in">IN</span>
                     <FormGroup className="input-field">
-                        <Input type="select" name="select" className="input-field-style">
+                        <Input type="select" onChange={(event) => this.searchOrg(donationOrgs, event)} name="select" className="input-field-style">
                         <option>All Countries</option>
                         <option>London</option>
                         <option>India</option>
@@ -114,7 +188,9 @@ class OrgDonations extends Component{
 function mapStateToProps(state){
     return{
         donationOrgs: state.donationReducer.donationOrgs,
-        donationOrgsLoading: state.donationReducer.donationOrgsLoading
+        donationOrgsLoading: state.donationReducer.donationOrgsLoading,
+        filteredOrgs: state.donationReducer.filteredOrgs,
+        searching: state.donationReducer.searching
     }
 }
 

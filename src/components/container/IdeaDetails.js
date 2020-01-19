@@ -7,27 +7,27 @@ import Loader from 'react-loader-spinner'
 import {connect} from 'react-redux';
 import fetchApi from '../../utilities/fetchApi';
 
-var details = {
-    topic: "Idea 1",
-    author: "John Doe",
-    replies: 12,
-    lastActivity: "Yesterday",
-    description: [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
-    ],
-    comments: [
-        {
-            username: 'John Doe',
-            body: 'Ac orci phasellus egestas tellus rutrum. Interdum velit euismod in pellentesque massa placerat. Venenatis lectus magna fringilla urna porttitor rhoncus. Adipiscing'
-        },
-        {
-            username: 'Jane Doe',
-            body: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        }
-    ]
-}
+// var details = {
+//     topic: "Idea 1",
+//     author: "John Doe",
+//     replies: 12,
+//     lastActivity: "Yesterday",
+//     description: [
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
+//         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque egestas congue quisque egestas. Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus. Ipsum dolor sit amet consectetur adipiscing elit. Nunc eget lorem dolor sed viverra ipsum. Libero enim sed faucibus turpis in eu mi bibendum. Eget nullam non nisi est sit amet facilisis. Quam nulla porttitor massa id.',
+//     ],
+//     comments: [
+//         {
+//             username: 'John Doe',
+//             body: 'Ac orci phasellus egestas tellus rutrum. Interdum velit euismod in pellentesque massa placerat. Venenatis lectus magna fringilla urna porttitor rhoncus. Adipiscing'
+//         },
+//         {
+//             username: 'Jane Doe',
+//             body: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+//         }
+//     ]
+// }
 
 class IdeaDetails extends Component{
 

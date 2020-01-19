@@ -1,5 +1,5 @@
 .custom-card{
-    border: 1px solid lightgray;
+    /* border: 0.5px solid #fff; */
     padding: 10px 25px;
     max-width: 378px;
     /* max-width: 32%; */
@@ -8,32 +8,47 @@
     margin-bottom: 5px;
     cursor: pointer;
     /* width: 350px */
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
+    background-color: #172A45;
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    border-radius: 5px;
 }
 
+.custom-card>h3 , .custom-news-card>h4{
+    color: rgb(226, 234, 248);
+    font-weight: bold;
+}
+
+
 .custom-news-card{
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     padding: 10px 25px;
     width: 500px;
     margin-right: 20px;
     margin-top: 30px;
     margin-bottom: 10px;
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
+    background-color: #172A45;
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    border-radius: 5px;
+}
+
+.custom-news-card>h4{
+    color:rgb(226, 234, 248)
+    
 }
 
 .custom-card:hover{
-    animation-name: card;
-    animation-duration: 0.2s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards
+    transform: translateY(-5px);
 }
 
-@keyframes card {
-    from {box-shadow: 0 0 0 0 transparent;}
-    to {box-shadow: 0 0 3px 1px lightgray;;}
-  }
 
 .card-text{
     margin-top: 20px;
-    /* height: 165px; */
+    /* - */
+    color: rgb(156, 178, 214);
 }
 
 .card-link{
@@ -44,6 +59,7 @@
 
 .footer{
     margin-top: 20px;
+    color: rgb(196, 213, 243);
 }
 
 

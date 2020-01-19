@@ -5,7 +5,7 @@ import store from '../../store/store';
 import * as actions from '../../actions';
 import OrganizationCard from '../presentations/OrganizationCard';
 import { Button,FormGroup, Input } from 'reactstrap';
-import {withRouter} from 'react-router-dom';
+
 import fetchApi from '../../utilities/fetchApi';
 
 // var organizations = [
@@ -99,7 +99,7 @@ class OrgList extends Component{
     async componentDidMount(){
         let response = await fetchApi('/api/orgs', "GET")
         if(!response.error){
-            console.log(response.data)
+            // console.log(response.data)
             store.dispatch(actions.orgsReceived(response.data))
         }else{
             console.log(response.error)
@@ -190,14 +190,14 @@ class OrgList extends Component{
 
         return(
             <div className="page-container">
-                <h3>Organizations</h3>
+                <h3><b>Organizations</b></h3>
                 <div className="form-container">
                     <FormGroup className="input-field">
                         <Input type="text" name="org" onChange={(event) => this.searchOrg(orgs, event)} className="input-field-style" placeholder="Search for an organization"></Input>
                     </FormGroup>
                     <span className="in">IN</span>
                     <FormGroup className="input-field">
-                        <Input name="location" onChange={(event)=>this.searchOrg(orgs,event)} type="select" name="select" className="input-field-style">
+                        <Input id="select-dropdown" onChange={(event)=>this.searchOrg(orgs,event)} type="select" name="select" className="input-field-style">
                         <option>All Countries</option>
                         <option>London</option>
                         <option>India</option>

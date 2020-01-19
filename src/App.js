@@ -13,6 +13,7 @@ import Ideas from './components/views/Ideas';
 import IdeaDetails from './components/container/IdeaDetails'
 import News from './components/views/News'
 import SubmitIdea from './components/container/SubmitIdea'
+import NewsItemDetail from './components/container/NewsItemDetail';
 
 library.add(fab)
 
@@ -28,6 +29,7 @@ class App extends Component{
           <Route exact path='/ideas/:id' component={IdeaDetails}></Route>
           <Route path='/submit-idea' component={SubmitIdea}></Route>
           <Route exact path='/news' component={News}></Route>
+          <Route path='/news/:id' component={NewsItemDetail}></Route>
         </BrowserRouter>
       </Provider>
     )

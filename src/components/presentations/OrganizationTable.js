@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Table} from 'reactstrap';
-import OrganizationCard from './OrganizationCard';
 
 class OrganizationTable extends Component{
     render(){
@@ -22,7 +21,7 @@ class OrganizationTable extends Component{
 
 
         return(
-            <Table className="org-table" hover responsive>
+            <Table className="org-table" borderless responsive>
                 <thead>
                     <tr>
                     <th>Organization</th>

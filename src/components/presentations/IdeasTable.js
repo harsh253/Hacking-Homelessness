@@ -11,14 +11,14 @@ class IdeasTable extends Component{
                     <td>{idea.topic}</td>
                     <td>{idea.author}</td>
                     <td>{idea.replies}</td>
-                    <td>{idea.lastActivity}</td>
+                    {idea.lastActivity? <td>{idea.lastActivity}</td>: <td>Few Seconds Ago</td> }
                 </tr>
             )
         })
 
         let tableData = ideas;
         return(
-            <Table hover responsive className="ideas-table">
+            <Table borderless responsive className="ideas-table">
                 <thead>
                     <tr>
                     <th>Idea</th>

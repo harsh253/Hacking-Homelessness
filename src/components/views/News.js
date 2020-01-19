@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Button} from 'reactstrap';
 import Layout from './Layout';
 import NewsContainer from '../container/NewsContainer';
 import {withRouter} from 'react-router-dom'

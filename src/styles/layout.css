@@ -4,6 +4,13 @@
 
 .nav-link{
     cursor: pointer;
+    color: rgb(226, 234, 248)  !important;
+    font-size: 14px !important;
+}
+
+.navbar-toggler{
+    border-color: #60ddc9 !important;
+    background-color: transparent !important;
 }
 
 .login-services{
@@ -30,6 +37,21 @@
     margin-right: 5px;
 }
 
-@media screen and (max-width: 992px){
+.dropdown-menu{
+    background-color: #0A192F !important;
+    border-color: white !important;
+}
+
+.dropdown-item{
+    color: rgb(226, 234, 248) !important
+}
+
+.dropdown-item:hover{
+    background-color: transparent !important;
+    color: #60ddc9  !important
+}
+
+@media screen and (min-width: 992px){
+
 
 }

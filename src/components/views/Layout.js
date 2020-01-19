@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom'
 import { 
   Collapse,
@@ -21,7 +21,7 @@ import {
 import '../../styles/layout.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import {GoogleLogin} from 'react-google-login';
 import {connect} from 'react-redux';
 import store from '../../store/store';
 import * as actions from '../../actions';
@@ -77,7 +77,7 @@ class Layout extends Component {
   
         return(
             <div className="layout-container">
-            <Navbar fixed="top" color="" className="custom-nav-style" light expand="md">
+            <Navbar fixed="top" color="" className="custom-nav-style" dark expand="md">
               <NavbarBrand>Hacking Homelessness</NavbarBrand>
               <NavbarToggler onClick={this.toggleNav} />
               <Collapse isOpen={this.state.isOpen} navbar>

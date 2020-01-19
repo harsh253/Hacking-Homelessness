@@ -29,6 +29,14 @@ export function filterOrgs(filteredOrgs,searching){
     }
 }
 
+export function filterDonationOrgs(filteredOrgs,searching){
+    return{
+        type: actionTypes.FILTER_DONATION_ORGS,
+        filteredOrgs,
+        searching
+    }
+}
+
 export function clearOrgDetails(){
     return{
         type: actionTypes.CLEAR_ORG_DETAILS

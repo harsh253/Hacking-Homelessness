@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Layout from '../views/Layout';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import {connect} from 'react-redux';
 import fetchApi from '../../utilities/fetchApi';
 
@@ -37,8 +37,7 @@ class SubmitIdea extends Component{
 
     async submitIdea(e){
         e.preventDefault()
-        let response = await fetchApi('/api/submitIdea',"POST", this.state.formDetails, localStorage.getItem('accessToken'));
-        // console.log(response)
+        await fetchApi('/api/submitIdea',"POST", this.state.formDetails, localStorage.getItem('accessToken'))
         this.props.history.push('/ideas')
     }
 
@@ -51,7 +50,7 @@ class SubmitIdea extends Component{
                     <div className="page-container">
                         <h3>Submit your own Idea</h3>
                         <div className="idea-form-container">
-                            <Form>
+                            <Form onSubmit={this.submitIdea.bind(this)}>
                                 <FormGroup>
                                     <Label for="author"><b>Author</b></Label>
                                     <Input disabled value={name} type="text" name="author" id="author"/>
@@ -65,7 +64,7 @@ class SubmitIdea extends Component{
                                     <Input style={{height: '150px'}} required onChange={this.handleChange.bind(this)} type="textarea" name="description" id="description" />
                                 </FormGroup>
                                 <div className="button-container">
-                                    <Button onClick={this.submitIdea.bind(this)} type="submit" color="primary">Submit</Button>
+                                    <Button type="submit" color="primary">Submit</Button>
                                 </div>
                             </Form>
                         </div>
