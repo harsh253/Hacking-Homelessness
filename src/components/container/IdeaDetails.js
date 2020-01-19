@@ -5,6 +5,7 @@ import store from '../../store/store';
 import * as actions from '../../actions';
 import Loader from 'react-loader-spinner'
 import {connect} from 'react-redux';
+import fetchApi from '../../utilities/fetchApi';
 
 var details = {
     topic: "Idea 1",
@@ -30,8 +31,20 @@ var details = {
 
 class IdeaDetails extends Component{
 
-    componentDidMount(){
-        store.dispatch(actions.ideaDetailsReceived(details))
+    async componentDidMount(){
+        const ideaId = this.props.match.params.id
+
+        let response = await fetchApi(`/api/idea/${ideaId}`, "GET");
+        if(!response.error){
+            store.dispatch(actions.ideaDetailsReceived(response.data))
+        }else{
+            console.log(response.error)
+        }
+        
+    }
+
+    async componentWillUnmount(){
+        await store.dispatch(actions.clearIdeaDetails());
     }
 
     render(){

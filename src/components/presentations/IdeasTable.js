@@ -7,7 +7,7 @@ class IdeasTable extends Component{
         
         const ideas = data.map((idea,i)=>{
             return(
-                <tr key={i} onClick={()=>this.props.history.push('/ideas/:id')}>
+                <tr key={i} onClick={()=>this.props.history.push(`/ideas/${idea._id}`)}>
                     <td>{idea.topic}</td>
                     <td>{idea.author}</td>
                     <td>{idea.replies}</td>

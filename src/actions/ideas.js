@@ -13,3 +13,9 @@ export function ideaDetailsReceived(details){
         details
     }
 }
+
+export function clearIdeaDetails(){
+    return{
+        type: actionTypes.CLEAR_IDEA_DETAILS
+    }
+}

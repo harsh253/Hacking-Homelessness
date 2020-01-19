@@ -22,6 +22,9 @@ export default function(state = initialState , action){
 
         case actionTypes.FILTER_ORGS:
             return filterOrgs(state,action);
+
+        case actionTypes.CLEAR_ORG_DETAILS:
+            return resetOrgDetails(state);
     
         default:
         return state
@@ -52,5 +55,12 @@ function filterOrgs(state,action){
     var updatedState = Object.assign({}, state)
     updatedState['filteredOrgs'] = filteredOrgs;
     updatedState['searching'] = searching;
+    return updatedState
+}
+
+function resetOrgDetails(state){
+    var updatedState = Object.assign({}, state)
+    updatedState['orgDetails'] = {}
+    updatedState['orgDetailsLoading'] = true
     return updatedState
 }

@@ -28,3 +28,9 @@ export function filterOrgs(filteredOrgs,searching){
         searching
     }
 }
+
+export function clearOrgDetails(){
+    return{
+        type: actionTypes.CLEAR_ORG_DETAILS
+    }
+}

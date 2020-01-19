@@ -18,6 +18,9 @@ export default function(state = initialState , action){
         case actionTypes.IDEA_DETAILS_RECEIVED:
             return populateDetails(state,action)
 
+        case actionTypes.CLEAR_IDEA_DETAILS:
+            return resetIdeaDetails(state);
+
         default:
         return state
     }
@@ -36,5 +39,12 @@ function populateDetails(state,action){
     var updatedState = Object.assign({}, state)
     updatedState['ideaDetails'] = details;
     updatedState['ideaDetailsLoading'] = false
+    return updatedState
+}
+
+function resetIdeaDetails(state){
+    var updatedState = Object.assign({}, state)
+    updatedState['ideaDetails'] = {};
+    updatedState['ideaDetailsLoading'] = true
     return updatedState
 }

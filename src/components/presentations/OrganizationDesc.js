@@ -4,6 +4,11 @@ import { faPrint} from '@fortawesome/free-solid-svg-icons'
 
 class OrganizationDesc extends Component{
     render(){
+        const description = this.props.data.description.map((para,i)=>{
+            return(
+                <p key={i}>{para}</p>
+            )
+        })
         return(
             <div>
                 <div className="page-container">
@@ -16,7 +21,7 @@ class OrganizationDesc extends Component{
                         </div>
                         <div className="org-desc">
                             <h6><b>Description</b> :</h6>
-                            <p>{this.props.data.detailedDescription}</p>
+                            {description}
                         </div>
                     </div>
                     <div className="share-info text-right">

@@ -28,10 +28,27 @@ app.get('/api/orgs',(req,res)=>{
 	})
 })
 
+app.get('/api/orgs/:id', (req,res)=>{
+	const orgId = req.params.id;
+	console.log('orgId : ' , orgId)
+
+	Organization.findById(orgId, function(err,result){
+		if(err){
+			res.json({
+				error:err
+			})
+		}else{
+			res.json({
+				status:200,
+				data:result
+			})
+		}
+	})
+
+})
+
 app.get('/api/ideas',(req,res)=>{
 	Ideas.find({}).then((ideas)=>{
-		// res.send(orgs)
-		// res.status(200)
 		res.json({
 			status: 200,
 			data: ideas
@@ -46,17 +63,17 @@ app.get('/api/ideas',(req,res)=>{
 })
 
 
-app.post('/api/idea',(req,res)=>{
-		const newIdea = new Ideas(req.body)
-		newIdea.save().then(()=>{
-			res.json({
-				status:200
-			})
-		}).catch((e)=>{
-			res.json({
-				error:e
-			})
+app.post('/api/submitIdea',(req,res)=>{
+	const newIdea = new Ideas(req.body)
+	newIdea.save().then(()=>{
+		res.json({
+			status:200
 		})
+	}).catch((e)=>{
+		res.json({
+			error:e
+		})
+	})
 })
 
 app.get('/api/idea/:id',(req,res)=>{

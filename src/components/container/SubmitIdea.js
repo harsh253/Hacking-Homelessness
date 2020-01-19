@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Layout from '../views/Layout';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import {connect} from 'react-redux';
+import fetchApi from '../../utilities/fetchApi';
 
 
 
@@ -11,21 +12,33 @@ class SubmitIdea extends Component{
         this.state = {
             formDetails:{
                 topic: '',
-                body: ''
-            }
+                author: this.props.name,
+                description: []
+            },
+            
         }
 
     }
 
-    handleChange(e){
+    async handleChange(e){
         var details = Object.assign({}, this.state.formDetails);
-        details[e.target.name] = e.target.value;
-        this.setState({
-            formDetails:details
+        if(e.target.name === 'description'){
+            var text = document.getElementById('description').value
+            var arrayOfText = text.split('\n')
+            console.log(arrayOfText)
+            details.description = arrayOfText
+        }else{
+            details[e.target.name] = e.target.value;
+        }
+        await this.setState({
+            formDetails:details,
         })
     }
 
-    submitIdea(){
+    async submitIdea(e){
+        e.preventDefault()
+        let response = await fetchApi('/api/submitIdea',"POST", this.state.formDetails, localStorage.getItem('accessToken'));
+        // console.log(response)
         this.props.history.push('/ideas')
     }
 
@@ -45,14 +58,14 @@ class SubmitIdea extends Component{
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="topic"><b>Topic</b></Label>
-                                    <Input type="text" name="topic" value={this.state.topic} onChange={this.handleChange.bind(this)} id="topic" placeholder="Idea Topic" />
+                                    <Input type="text" name="topic" required value={this.state.formDetails.topic} onChange={this.handleChange.bind(this)} id="topic" placeholder="Idea Topic" />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="body"><b>Idea</b></Label>
-                                    <Input style={{height: '150px'}} value={this.state.ideaBody} onChange={this.handleChange.bind(this)} type="textarea" name="body" id="body" />
+                                    <Label for="description"><b>Idea</b></Label>
+                                    <Input style={{height: '150px'}} required onChange={this.handleChange.bind(this)} type="textarea" name="description" id="description" />
                                 </FormGroup>
                                 <div className="button-container">
-                                    <Button onClick={this.submitIdea.bind(this)}type="button" color="primary">Submit</Button>
+                                    <Button onClick={this.submitIdea.bind(this)} type="submit" color="primary">Submit</Button>
                                 </div>
                             </Form>
                         </div>
@@ -60,6 +73,7 @@ class SubmitIdea extends Component{
                 </div>
             )
         }else{
+            console.log(accessToken)
             return(
                 <div>
                     <Layout></Layout>

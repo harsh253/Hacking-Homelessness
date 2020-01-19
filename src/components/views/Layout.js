@@ -52,7 +52,7 @@ class Layout extends Component {
     }
 
     logout(){
-      localStorage.removeItem('accessTokenPresent')
+      localStorage.removeItem('accessToken')
       localStorage.removeItem('name')
       store.dispatch(actions.logOutUser())
     }
@@ -60,7 +60,7 @@ class Layout extends Component {
     render(){
       const responseFacebook = (response) => {
         console.log(response);
-          localStorage.setItem('accessTokenPresent', response.accessToken ? true: false)
+          localStorage.setItem('accessToken', response.accessToken)
           localStorage.setItem('name', response.name)
           window.location.reload()
 
@@ -68,10 +68,12 @@ class Layout extends Component {
   
       const responseGoogle = (response) => {
         console.log(response);
-        localStorage.setItem('accessTokenPresent', response.accessToken ? true: false)
+        localStorage.setItem('accessToken', response.accessToken)
         localStorage.setItem('name', response.profileObj.name)
         window.location.reload()
       }
+
+      console.log(this.props)
   
         return(
             <div className="layout-container">
