@@ -266,6 +266,7 @@ input[type=text]{
     margin-top: 10px;
 }
 
+
 .idea-details-parent-container{
     margin-top: 30px
 }
@@ -393,6 +394,11 @@ input[type=text]{
     }
     .custom-card{
         width: 360px !important;
+        
+    }
+
+    .custom-news-card, .custom-card{
+        margin-right: 0px !important;
     }
 
 }

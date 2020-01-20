@@ -9,6 +9,7 @@ class OrganizationDesc extends Component{
                 <p key={i}>{para}</p>
             )
         })
+        const twitterContent = `Hey Twitteratis. I came across this organization by the name '${this.props.data.name}' which is fighting against homelessness. For more details go to ${window.location.href}`
         return(
             <div>
                 <div className="page-container">
@@ -27,7 +28,7 @@ class OrganizationDesc extends Component{
                     <div className="share-info text-right">
                         <h6><b>Share information on</b> :</h6>
                         <FontAwesomeIcon className="custom-icon fb-icon" icon={['fab', 'facebook-f']}></FontAwesomeIcon>
-                        <a href="https://twitter.com/intent/tweet?text=Hello%20world"><FontAwesomeIcon className="custom-icon twitter-icon" icon={['fab', 'twitter']}></FontAwesomeIcon></a>
+                        <a href={`https://twitter.com/intent/tweet?text=${twitterContent}`}><FontAwesomeIcon className="custom-icon twitter-icon" icon={['fab', 'twitter']}></FontAwesomeIcon></a>
                         Or
                         <FontAwesomeIcon onClick={()=>window.print()}className="custom-icon print-icon" icon={faPrint}></FontAwesomeIcon>
                     </div>

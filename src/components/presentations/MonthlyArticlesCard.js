@@ -31,7 +31,7 @@ class MonthlyArticlesCard extends Component{
         
         const monthlyList = listOfMonths.map((date,i)=>{
             return(
-                <li key={i}><Link className="news-link" to={'/'} >{date}</Link></li>
+                <li key={i}><Link className="news-link" to={`/monthly/${date}`} >{date}</Link></li>
             )
         })
 
