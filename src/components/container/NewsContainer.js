@@ -40,7 +40,7 @@ class NewsContainer extends Component{
     }
 
     render(){
-        const {articles, allArticlesLoading} = this.props
+        const {articles, articlesLoading} = this.props
         let content;
 
         const articlesRendered = articles.map((article,i)=>{
@@ -49,7 +49,7 @@ class NewsContainer extends Component{
             )
         })
 
-        if(articles.length>0 && !allArticlesLoading){
+        if(articles.length>0 && !articlesLoading){
             content = (
                 <div className="news-container">
                     <RecentArticlesCard data={articlesRendered}></RecentArticlesCard>
@@ -57,17 +57,17 @@ class NewsContainer extends Component{
                 </div>
 
             )
-        }else if(articles.length===0 && !allArticlesLoading){
+        }else if(articles.length===0 && !articlesLoading){
             content = (
                 <p>
                     No article posted yet
                 </p>
             )
-        }else if(allArticlesLoading){
+        }else if(articlesLoading){
             content = (
                 <div className="text-center loader">
                     <Loader type="Oval"
-                    color="#007bff"/>
+                    color="#60DDC9"/>
                 </div>
             )
         }

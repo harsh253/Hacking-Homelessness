@@ -57,14 +57,14 @@ class SubmitIdea extends Component{
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="topic"><b>Topic</b></Label>
-                                    <Input type="text" name="topic" required value={this.state.formDetails.topic} onChange={this.handleChange.bind(this)} id="topic" placeholder="Idea Topic" />
+                                    <Input type="text" name="topic" className="topic-textbox" required value={this.state.formDetails.topic} onChange={this.handleChange.bind(this)} id="topic" placeholder="Idea Topic" />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="description"><b>Idea</b></Label>
-                                    <Input style={{height: '150px'}} required onChange={this.handleChange.bind(this)} type="textarea" name="description" id="description" />
+                                    <Input style={{height: '150px'}} className="description-textbox" required onChange={this.handleChange.bind(this)} type="textarea" name="description" id="description" />
                                 </FormGroup>
                                 <div className="button-container">
-                                    <Button type="submit" color="primary">Submit</Button>
+                                    <Button className="idea-submit-btn" type="submit" color="primary">Submit</Button>
                                 </div>
                             </Form>
                         </div>

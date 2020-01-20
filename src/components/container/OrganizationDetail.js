@@ -44,7 +44,7 @@ class OrganizationDetail extends Component{
             content = (
                 <div className="text-center loader">
                     <Loader type="Oval"
-                    color="#007bff"/>
+                    color="#60DDC9"/>
                 </div>
             )
         }

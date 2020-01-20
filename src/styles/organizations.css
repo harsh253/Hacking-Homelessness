@@ -95,7 +95,7 @@ h3{
 
 .org-desc{
     margin-top: 20px;
-    max-height: 60vh;
+    /* max-height: 60vh; */
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -106,21 +106,27 @@ h3{
 
 .org-details-container{
     border-bottom: 1px solid #60DDC9;
+    border-top: 1px solid #60DDC9;
     background-color: #172A45;
     padding: 25px;
     border-radius: 5px;
+    margin-top:20px;
 }
 
 .share-info{
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-flow: row wrap;
     margin-top: 20px;
 }
 
+.share-info>h6{
+    margin-top: 4px
+}
+
 .custom-icon{
     margin:0 10px;
-    font-size: 20px 
+    font-size: 25px 
 }
 
 
@@ -129,12 +135,21 @@ h3{
 }
 
 .fb-icon{
-    color: #3b5998;
-    
+    color: #3b5998;    
+}
+
+.fb-button{
+    background-color: #3b5998 !important;
+    border-color: transparent !important
 }
 
 .twitter-icon{
     color: #00acee
+}
+
+.twitter-button{
+    background-color: #00acee !important;
+    border-color: transparent !important
 }
 
 .org-table, .ideas-table{
@@ -197,6 +212,13 @@ input[type=text]{
     color : #60DDC9
 }
 
+.topic-textbox, .description-textbox{
+    background-color: transparent !important;
+    border-color: #60DDC9 !important;
+    
+}
+
+
 .search-btn{
     margin-left: auto;
     margin-right: auto;
@@ -218,6 +240,12 @@ input[type=text]{
     transition: 0.3s
 }
 
+.idea-submit-btn{
+    background-color: transparent !important;
+    border-color: #60DDC9 !important;
+    color: #60DDC9 !important;
+    transition: 0.3s
+}
 
 
 .author-container{
@@ -231,9 +259,11 @@ input[type=text]{
 }
 
 .ideas-detail-container{
-    border-top: 1px solid #60DDC9;
-    border-bottom: 1px solid #60DDC9;
-    margin: 8px 0px
+    border: 1px solid transparent;
+    margin: 8px 0px;
+    background-color: #172A45;
+    border-radius: 5px;
+    padding: 5px 10px 
 }
 
 .idea-description-container>span, .reply-btn-container{
@@ -265,11 +295,13 @@ input[type=text]{
 .reply-box-container{
     margin-top: 10px;
     margin-bottom: 10px;
+    height: 100px !important
 }
 
 .reply-box{
     background-color: transparent !important;
-    color: #60DDC9 !important
+    color: #60DDC9 !important;
+    
 }
 
 
@@ -292,10 +324,11 @@ input[type=text]{
     float: right
 }
 
-.reply-btn:hover, .search-btn:hover, .idea-share-btn:hover{
+.reply-btn:hover, .reply-btn:focus .search-btn:hover, .search-btn:focus .idea-share-btn:hover, .idea-share-btn:focus, .idea-submit-btn:hover, .idea-submit-btn:focus{
     background-color: rgba(96,221,201,0.1) !important;
 }
 
+.
 
 /* .box-toggle{
     height: 0px !important;
@@ -319,15 +352,16 @@ input[type=text]{
     margin: 25px auto;
     padding: 25px;
     border-radius: 5px; 
-    background-color: #172A45
+    background-color: #172A45;
+    border-bottom: 1px  solid #60DDC9
 }
 
 #author{
     color: black !important
 }
 
-#topic{
-    color: black !important
+#topic, #description{
+    color: white !important
 }
 
 .idea-form-container>form>.button-container{
@@ -340,17 +374,18 @@ input[type=text]{
 }
 
 .news-details-parent-container{
-    margin-top: 100px;
+    margin-top: 20px;
     background-color: #172A45;
     padding: 25px;
     border-radius: 5px;
+    border-bottom: 1px solid #60DDC9;
+    border-top: 1px solid #60DDC9
 }
 
 .news-content-container{
     margin-top: 10px;
     color: rgb(196, 213, 243);
     overflow-y: scroll;
-    max-height: 60vh
 }
 
 
@@ -402,7 +437,7 @@ input[type=text]{
     .custom-card{
         width: 360px !important;
         
-    }
+    }    
 
     .custom-news-card, .custom-card{
         margin-right: 0px !important;

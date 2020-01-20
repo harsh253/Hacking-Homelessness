@@ -16,19 +16,19 @@ class NewsDetails extends Component{
 
         return(
             <div className="page-container">
-                <div className="news-details-parent-container">
-                    <h3>{data.heading}</h3>
-                    <small>{data.created}</small>
-                    <div className="news-content-container">
-                        {paragraphs}
-                    </div>
-                </div>
                 <div className="share-info text-right">
                     <h6><b>Share information on</b> :</h6>
                     <FontAwesomeIcon className="custom-icon fb-icon" icon={['fab', 'facebook-f']}></FontAwesomeIcon>
                     <a href={`https://twitter.com/intent/tweet?text=${twitterContent}`}><FontAwesomeIcon className="custom-icon twitter-icon" icon={['fab', 'twitter']}></FontAwesomeIcon></a>
                     Or
                     <FontAwesomeIcon onClick={()=>window.print()}className="custom-icon print-icon" icon={faPrint}></FontAwesomeIcon>
+                </div>
+                <div className="news-details-parent-container">
+                    <h3>{data.heading}</h3>
+                    <small>{data.created}</small>
+                    <div className="news-content-container">
+                        {paragraphs}
+                    </div>
                 </div>
             </div>
         )

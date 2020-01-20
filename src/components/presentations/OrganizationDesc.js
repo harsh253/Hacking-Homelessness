@@ -13,6 +13,13 @@ class OrganizationDesc extends Component{
         return(
             <div>
                 <div className="page-container">
+                    <div className="share-info text-right">
+                        <h6><b>Share information on</b> :</h6>
+                        <FontAwesomeIcon className="custom-icon fb-icon" icon={['fab', 'facebook-f']}></FontAwesomeIcon>
+                        <a href={`https://twitter.com/intent/tweet?text=${twitterContent}`}><FontAwesomeIcon className="custom-icon twitter-icon" icon={['fab', 'twitter']}></FontAwesomeIcon></a>
+                        Or
+                        <FontAwesomeIcon onClick={()=>window.print()}className="custom-icon print-icon" icon={faPrint}></FontAwesomeIcon>
+                    </div>
                     <div className="org-details-container">
                         <h3>{this.props.data.name}</h3>
                         <div className="org-info">
@@ -24,13 +31,6 @@ class OrganizationDesc extends Component{
                             <h6><b>Description</b> :</h6>
                             {description}
                         </div>
-                    </div>
-                    <div className="share-info text-right">
-                        <h6><b>Share information on</b> :</h6>
-                        <FontAwesomeIcon className="custom-icon fb-icon" icon={['fab', 'facebook-f']}></FontAwesomeIcon>
-                        <a href={`https://twitter.com/intent/tweet?text=${twitterContent}`}><FontAwesomeIcon className="custom-icon twitter-icon" icon={['fab', 'twitter']}></FontAwesomeIcon></a>
-                        Or
-                        <FontAwesomeIcon onClick={()=>window.print()}className="custom-icon print-icon" icon={faPrint}></FontAwesomeIcon>
                     </div>
                 </div>
             </div>

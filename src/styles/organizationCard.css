@@ -13,6 +13,7 @@
     transition: transform 0.3s;
     transition-timing-function: ease-in-out;
     border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
 }
 
 .custom-card>h3 , .custom-news-card>h4{
@@ -33,6 +34,7 @@
     transition: transform 0.3s;
     transition-timing-function: ease-in-out;
     border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
 }
 
 .custom-news-card>h4{
@@ -58,6 +60,11 @@
     box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
     background-color: #172A45;
     border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
+}
+
+.custom-article-card>p>a{
+    color: #60ddc9
 }
 
 

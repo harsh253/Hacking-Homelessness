@@ -4,6 +4,7 @@ import * as actions from '../../actions';
 import store from '../../store/store';
 import {connect} from 'react-redux';
 import NewsDetails from '../presentations/NewsDetails'
+import Loader from 'react-loader-spinner'
 
 const newsDetails = {
     heading: 'News About Caretakers Cottage',
@@ -34,6 +35,17 @@ class NewsItemDetail extends Component{
         if(Object.keys(details).length>0 && !detailsLoading){
             content = (
                 <NewsDetails data={details}></NewsDetails>
+            )
+        }else if(Object.keys(details).length===0 && !detailsLoading){
+            content = (
+                <p>News content not found</p> 
+            )
+        }else if(detailsLoading){
+            content = (
+                <div className="text-center loader">
+                    <Loader type="Oval"
+                    color="#60DDC9"/>
+                </div>
             )
         }
         return(

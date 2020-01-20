@@ -19,7 +19,8 @@ class Ideas extends Component{
 
     async submitIdea(){
         const {name, accessToken} = this.props;
-        if(name.length>0 && accessToken)
+        console.log(name)
+        if(name && accessToken)
             this.props.history.push('/submit-idea')
         else{
             await this.setState({
