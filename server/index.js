@@ -3,6 +3,7 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose')
 const Organization = require('./models/Organization.js')
 const Ideas = require('./models/Ideas.js')
+const News = require('./models/News.js')
 
 
 const app = express()
@@ -62,6 +63,40 @@ app.get('/api/ideas',(req,res)=>{
 	})
 })
 
+app.get('/api/idea/:id',(req,res)=>{
+	const id = req.params.id
+	Ideas.findById(id, function (err,result){
+		if(result){
+			return res.json({
+				data:result
+			})
+		}
+		else
+		{
+			return res.json({
+				error:err
+			})
+		}
+
+	})
+})
+
+app.get('/api/news/:year/:month',(req,res)=>{
+	const Year = req.params.year
+	const Month = req.params.month
+	News.find({year:Year,
+					month:Month}).limit(20).then((news)=>{
+		res.json({
+			status: 200,
+			data: news
+		})
+	}).catch((e)=>{
+		res.json({
+			error: e
+		})
+		})
+	})
+
 
 
 app.post('/api/submitIdea',(req,res)=>{
@@ -115,23 +150,6 @@ app.post('/api/idea/reply/:id',(req,res)=>{
 	})
 })
 
-app.get('/api/idea/:id',(req,res)=>{
-	const id = req.params.id
-	Ideas.findById(id, function (err,result){
-		if(result){
-			return res.json({
-				data:result
-			})
-		}
-		else
-		{
-			return res.json({
-				error:err
-			})
-		}
-
-	})
-})
 
 
 		
