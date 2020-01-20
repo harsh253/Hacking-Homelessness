@@ -48,6 +48,7 @@ app.get('/api/ideas',(req,res)=>{
 
 app.post('/api/idea',(req,res)=>{
 		const newIdea = new Ideas(req.body)
+		console.log(req.body)
 		newIdea.save().then(()=>{
 			res.json({
 				status:200
@@ -57,6 +58,43 @@ app.post('/api/idea',(req,res)=>{
 				error:e
 			})
 		})
+})
+
+app.post('/api/idea/reply/:id',(req,res)=>{
+	const id = req.params.id
+	const message = req.body.reply
+	const date_now = req.body.date_now
+	const user = req.body.name
+	
+
+	Ideas.findById(id, function (err,result){
+		if(result){
+			const comment = {
+				User:user,
+				Message:message
+			}
+			console.log(result.comments)
+			result.comments.push(comment)
+			result.lastActivity = date_now
+			result.save().then(()=>{
+				console.log("success!")
+			}).catch((e)=>{
+				return res.json({
+				error: e
+			})
+			})
+			res.json({
+				status:200
+			})
+		}
+		else
+		{
+			return res.json({
+				error:err
+			})
+		}
+
+	})
 })
 
 app.get('/api/idea/:id',(req,res)=>{
@@ -76,6 +114,8 @@ app.get('/api/idea/:id',(req,res)=>{
 
 	})
 })
+
+
 		
 
 app.listen(port, () => {
