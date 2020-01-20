@@ -264,6 +264,12 @@ input[type=text]{
 
 .reply-box-container{
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.reply-box{
+    background-color: transparent !important;
+    color: #60DDC9 !important
 }
 
 
@@ -282,7 +288,8 @@ input[type=text]{
     background-color: transparent !important;
     border-color: #60DDC9 !important;
     color: #60DDC9 !important;
-    transition: 0.3s  !important
+    transition: 0.3s  !important;
+    float: right
 }
 
 .reply-btn:hover, .search-btn:hover, .idea-share-btn:hover{
@@ -290,10 +297,10 @@ input[type=text]{
 }
 
 
-.box-toggle{
-    height: 0px;
-    display: none;
-}
+/* .box-toggle{
+    height: 0px !important;
+    display: none !important; 
+} */
 
 .cancel-toggle{
     display: none;

@@ -79,20 +79,21 @@ app.post('/api/submitIdea',(req,res)=>{
 
 app.post('/api/idea/reply/:id',(req,res)=>{
 	const id = req.params.id
-	const message = req.body.reply
+	const reply = req.body.reply
 	const date_now = req.body.date_now
-	const user = req.body.name
+	const username = req.body.username
 	
 
 	Ideas.findById(id, function (err,result){
 		if(result){
 			const comment = {
-				User:user,
-				Message:message
+				username,
+				reply
 			}
 			console.log(result.comments)
 			result.comments.push(comment)
 			result.lastActivity = date_now
+			result.replies+=1;
 			result.save().then(()=>{
 				console.log("success!")
 			}).catch((e)=>{

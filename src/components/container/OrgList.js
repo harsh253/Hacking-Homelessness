@@ -203,7 +203,7 @@ class OrgList extends Component{
                         <option>India</option>
                         </Input>
                     </FormGroup>
-                    <Button type="button" className="search-btn" color="primary">Search</Button>
+                    <Button type="button" className="search-btn" >Search</Button>
                 </div>
                 {content}
             </div>

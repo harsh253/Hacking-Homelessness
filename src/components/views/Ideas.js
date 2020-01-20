@@ -38,7 +38,7 @@ class Ideas extends Component{
                 <div className="page-container">
                     <h3>IDEAS</h3>
                     <div className="ideas-container">
-                        <Button type="button" onClick={this.submitIdea.bind(this)} className="idea-share-btn" color="primary">Share your own idea</Button>
+                        <Button type="button" onClick={this.submitIdea.bind(this)} className="idea-share-btn">Share your own idea</Button>
                     </div>
                     <IdeasContainer history={this.props.history}></IdeasContainer>
                 </div>
