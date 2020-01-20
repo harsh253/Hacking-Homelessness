@@ -36,7 +36,7 @@ class IdeaDetails extends Component{
 
         let response = await fetchApi(`/api/idea/${ideaId}`, "GET");
         if(!response.error){
-            store.dispatch(actions.ideaDetailsReceived(response.data))
+            store.dispatch(actions.ideaDetailsReceived(response.data, response.data.comments))
         }else{
             console.log(response.error)
         }

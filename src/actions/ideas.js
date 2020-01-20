@@ -7,15 +7,24 @@ export function ideasReceived(ideas){
     }
 }
 
-export function ideaDetailsReceived(details){
+export function ideaDetailsReceived(details,comments){
     return{
         type: actionTypes.IDEA_DETAILS_RECEIVED,
-        details
+        details,
+        comments
     }
 }
 
 export function clearIdeaDetails(){
     return{
         type: actionTypes.CLEAR_IDEA_DETAILS
+    }
+}
+
+export function addComment(comment,username){
+    return{
+        type: actionTypes.ADD_COMMENT,
+        comment,
+        username
     }
 }

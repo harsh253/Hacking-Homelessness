@@ -8,6 +8,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import {GoogleLogin} from 'react-google-login';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import fetchApi from '../../utilities/fetchApi';
+import store from '../../store/store';
+import * as actions from '../../actions';
 
 class IdeaDesc extends Component{
 
@@ -43,12 +45,31 @@ class IdeaDesc extends Component{
         })
     }
 
-    async submitReply(e,id){
-        e.preventDefault()
-        // if(this.state.formDetails.reply.trim()){
-            await fetchApi(`/api/idea/reply/${id}`,"POST", this.state.formDetails, localStorage.getItem('accessToken'))
-            window.location.reload()
-        // }
+     submitReply(id){
+        return async e=>{
+            e.preventDefault()
+            if(!this.state.formDetails.reply.trim()){
+                this.setState({
+                    error:{
+                        message: 'Reply can\'t\ be empty'
+                    }
+                })
+                // window.location.reload()
+            }else{
+                let response = await fetchApi(`/api/idea/reply/${id}`,"POST", this.state.formDetails, localStorage.getItem('accessToken'))
+                if(!response.error){
+                    store.dispatch(actions.addComment(this.state.formDetails.reply,this.state.formDetails.username))
+                    this.setState({
+                        formDetails:{
+                            reply: '',
+                            username: localStorage.getItem('name'),
+                            date_now: new Date()
+                        }
+                    })
+                }
+
+            }
+        }
     }
 
     render(){
@@ -66,13 +87,13 @@ class IdeaDesc extends Component{
             localStorage.setItem('name', response.profileObj.name)
             window.location.reload()
           }  
-        let {data,name,accessToken} = this.props
+        let {data,name,accessToken,comments} = this.props
         const description = data.description.map((para,i)=>{
             return(
                 <p key={i}>{para}</p>
             )
         })
-        const comments = data.comments.map((comment,i)=>{
+        const commentsList = comments.map((comment,i)=>{
             return(
                 <div key={i}>
                     <h5>{comment.username}</h5>
@@ -95,8 +116,8 @@ class IdeaDesc extends Component{
                         </div>
                     </div>
                     {accessToken && name ? 
-                        <Form onSubmit={(e)=>this.submitReply(e,data._id).bind(this)}>
-                            <Input type="textarea" className={"reply-box-container reply-box"} required value={this.state.reply} name="comment" onChange={this.handleChange.bind(this)}></Input>
+                        <Form onSubmit={this.submitReply(data._id)}>
+                            <Input type="textarea" className={"reply-box-container reply-box"} required value={this.state.formDetails.reply} name="comment" onChange={this.handleChange.bind(this)}></Input>
                             <Button type="submit" id="reply-btn" className="reply-btn" color="primary">Reply As {name}</Button>
                             <p>{this.state.error.message}</p>
                         </Form>
@@ -112,7 +133,7 @@ class IdeaDesc extends Component{
                     <h4>Comments</h4>
                     <div className="comment-detail-container">
                         <div className="comments-container">
-                            {comments}
+                            {commentsList}
                         </div>
                     </div>
                 </div>
@@ -161,7 +182,8 @@ class IdeaDesc extends Component{
 function mapStateToProps(state){
     return{
         name: state.authReducer.name,
-        accessToken: state.authReducer.accessToken
+        accessToken: state.authReducer.accessToken,
+        comments: state.ideasReducer.comments
     }
 }
 
