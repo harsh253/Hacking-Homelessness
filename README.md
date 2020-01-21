@@ -32,11 +32,12 @@ This will install latest stable version of mongodb
 
 1. `git clone https://github.com/harsh253/Hacking-Homelessness.git`
 2. `cd hacking-homelessness`
-3. `npm install`
-4. `cd server`
+3. `git checkout final`
+4. `npm install`
+5. `cd server`
 5. `npm install`
-4. `cd ../`
-3. `bash app.sh`
+7. `cd ../`
+8. `bash app.sh`
 
 >If you get an error like 'Something is already running on the port 3000'. 
 
