@@ -51,7 +51,8 @@ class IdeasContainer extends Component{
     async componentDidMount(){
         let response = await fetchApi('/api/ideas', "GET");
         if(!response.error){
-            store.dispatch(actions.ideasReceived(response.data))
+            console.log(response.formattedDate)
+            store.dispatch(actions.ideasReceived(response.data, response.formattedDate))
         }else{
             console.log(response.error)
         }
@@ -59,12 +60,12 @@ class IdeasContainer extends Component{
     }
 
     render(){
-        var {ideas, ideasLoading} = this.props;
+        var {ideas, ideasLoading, lastActivities} = this.props;
         let content;
 
         if(ideas.length>0 && !ideasLoading){
             content = (
-                <IdeasTable history={this.props.history} data={ideas}></IdeasTable>
+                <IdeasTable history={this.props.history} data={ideas} lastActivity={lastActivities}></IdeasTable>
             )
         }else if(ideas.length ===0 && !ideasLoading){
             content = (
@@ -92,7 +93,8 @@ class IdeasContainer extends Component{
 function mapStateToProps(state){
     return{
         ideas: state.ideasReducer.ideas,
-        ideasLoading: state.ideasReducer.allIdeasLoading
+        ideasLoading: state.ideasReducer.allIdeasLoading,
+        lastActivities: state.ideasReducer.lastActivity
     }
 }
 

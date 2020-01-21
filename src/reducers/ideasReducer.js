@@ -5,7 +5,9 @@ var initialState = {
     allIdeasLoading: true,
     ideaDetails: {},
     ideaDetailsLoading: true,
-    comments:[]
+    comments:[],
+    replies: 0,
+    lastActivity: []
 }
 
 
@@ -31,18 +33,20 @@ export default function(state = initialState , action){
 }
 
 function populateAllIdeas(state,action){
-    const {ideas} = action;
+    const {ideas, lastActivity} = action;
     var updatedState = Object.assign({}, state)
     updatedState['ideas'] = ideas;
     updatedState['allIdeasLoading'] = false
+    updatedState['lastActivity'] = lastActivity
     return updatedState
 }
 
 function populateDetails(state,action){
-    const {details,comments} = action;
+    const {details,comments, replies} = action;
     var updatedState = Object.assign({}, state)
     updatedState['ideaDetails'] = details;
-    updatedState['comments'] = comments
+    updatedState['comments'] = comments;
+    updatedState['replies'] = replies;
     updatedState['ideaDetailsLoading'] = false
     return updatedState
 }
@@ -57,6 +61,7 @@ function resetIdeaDetails(state){
 function commentAdd(state, action){
     const {username, comment} = action
     var updatedState = Object.assign({}, state);
+    updatedState['replies'] = updatedState.replies+1
     var listOfComments = Object.assign([],updatedState.comments);
     listOfComments.push({username, reply:comment})
     updatedState.comments = listOfComments;

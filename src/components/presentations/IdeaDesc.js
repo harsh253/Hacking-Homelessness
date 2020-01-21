@@ -87,7 +87,7 @@ class IdeaDesc extends Component{
             localStorage.setItem('name', response.profileObj.name)
             window.location.reload()
           }  
-        let {data,name,accessToken,comments} = this.props
+        let {data,name,accessToken,comments, replies} = this.props
         const description = data.description.map((para,i)=>{
             return(
                 <p key={i}>{para}</p>
@@ -112,7 +112,7 @@ class IdeaDesc extends Component{
                         </div>
                         <div className="idea-description-container">
                             {description}
-                            <span>{data.replies} replies</span>
+                            <span>{replies} replies</span>
                         </div>
                     </div>
                     {accessToken && name ? 
@@ -183,7 +183,8 @@ function mapStateToProps(state){
     return{
         name: state.authReducer.name,
         accessToken: state.authReducer.accessToken,
-        comments: state.ideasReducer.comments
+        comments: state.ideasReducer.comments,
+        replies: state.ideasReducer.replies
     }
 }
 

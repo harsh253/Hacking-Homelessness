@@ -50,15 +50,21 @@ app.get('/api/orgs/:id', (req,res)=>{
 
 app.get('/api/ideas',(req,res)=>{
 	Ideas.find({}).then((ideas)=>{
+		const formattedDate = ideas.map((idea)=>{
+			return idea.created.toLocaleDateString('en-En', {
+				year: 'numeric', month: 'long', day: 'numeric'
+			})
+		})
 		res.json({
 			status: 200,
-			data: ideas
+			data: ideas,
+			formattedDate
 		})
 
 	}).catch((e)=>{
 		res.json({
 			status:500,
-			error:"Internal server error"
+			error:e
 		})
 	})
 })

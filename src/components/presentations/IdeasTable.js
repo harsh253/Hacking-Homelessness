@@ -3,7 +3,8 @@ import {Table} from 'reactstrap';
 
 class IdeasTable extends Component{
     render(){
-        const {data} = this.props
+        const {data, lastActivity} = this.props
+        // console.log(lastActivity)
         
         const ideas = data.map((idea,i)=>{
             return(
@@ -11,7 +12,7 @@ class IdeasTable extends Component{
                     <td>{idea.topic}</td>
                     <td>{idea.author}</td>
                     <td>{idea.replies}</td>
-                    {idea.lastActivity? <td>{idea.lastActivity}</td>: <td>Few Seconds Ago</td> }
+                    {idea.lastActivity? <td>{lastActivity[i]}</td>: <td>Few Seconds Ago</td> }
                 </tr>
             )
         })
