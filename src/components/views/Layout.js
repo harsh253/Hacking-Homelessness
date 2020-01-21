@@ -75,9 +75,9 @@ class Layout extends Component {
       }  
 
       return(
-        <div className="layout-container">
+        <div className="layout-container text-center">
           <Navbar fixed="top" color="" className="custom-nav-style" dark expand="md">
-            <NavbarBrand>Hacking Homelessness</NavbarBrand>
+            <NavbarBrand onClick={()=>this.props.history.push('/')}>Hacking Homelessness</NavbarBrand>
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="mr-auto" navbar>
