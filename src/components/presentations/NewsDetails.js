@@ -4,7 +4,7 @@ import { faPrint} from '@fortawesome/free-solid-svg-icons'
 
 class NewsDetails extends Component{
     render(){
-        const {data} = this.props
+        const {data,date} = this.props
 
         const paragraphs = data.content.map((para,i)=>{
             return(
@@ -25,7 +25,7 @@ class NewsDetails extends Component{
                 </div>
                 <div className="news-details-parent-container">
                     <h3>{data.heading}</h3>
-                    <small>{data.created}</small>
+                    <small>{date}</small>
                     <div className="news-content-container">
                         {paragraphs}
                     </div>

@@ -81,11 +81,49 @@ app.get('/api/idea/:id',(req,res)=>{
 	})
 })
 
+app.get('/api/news', (req,res)=>{
+	News.find()
+	.limit(20)
+	.then((news)=>{
+		return res.json({
+			success: 1,
+			data: news
+		})
+	})
+	.catch(err=>{
+		res.json({
+			success:0,
+			error:err
+		})
+	})
+})
+
+app.get('/api/news/:id', (req,res)=>{
+	const id = req.params.id;
+	News.findById(id,function(err,result){
+		if(result){
+			formattedDate = result.created.toLocaleDateString('en-En', {
+				    year: 'numeric', month: 'long', day: 'numeric'
+				})
+			return res.json({
+				data:result,
+				formattedDate
+			})
+		}else{
+			return res.json({
+				error:err
+			})
+		}
+	})
+})
+
 app.get('/api/news/:year/:month',(req,res)=>{
-	const Year = req.params.year
-	const Month = req.params.month
-	News.find({year:Year,
-					month:Month}).limit(20).then((news)=>{
+	const year = req.params.year
+	const month = req.params.month
+	News.find({
+		year,
+		month
+	}).then((news)=>{
 		res.json({
 			status: 200,
 			data: news

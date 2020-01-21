@@ -7,15 +7,23 @@ export function recentArticlesReceived(articles){
     }
 }
 
-export function newsDetailsReceived(details){
+export function newsDetailsReceived(details,date){
     return{
         type: actionTypes.NEWS_DETAILS_RECEIVED,
-        details
+        details,
+        date
     }
 }
 
-// export function clearIdeaDetails(){
-//     return{
-//         type: actionTypes.CLEAR_IDEA_DETAILS
-//     }
-// }
+export function monthlyArticlesReceived(monthlyArticles){
+    return{
+        type: actionTypes.MONTHLY_ARTICLES_RECEIVED,
+        monthlyArticles
+    }
+}
+
+export function clearMonthlyArticles(){
+    return{
+        type: actionTypes.CLEAR_MONTHLY_ARTICLES_LIST
+    }
+}

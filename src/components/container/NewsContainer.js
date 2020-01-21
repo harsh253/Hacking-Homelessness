@@ -5,6 +5,7 @@ import store from '../../store/store';
 import * as actions from '../../actions'
 import RecentArticlesCard from '../presentations/RecentArticlesCard'
 import MonthlyArticlesCard from '../presentations/MonthlyArticlesCard'
+import fetchApi from '../../utilities/fetchApi'
 
 const allArticles = [
     {
@@ -36,11 +37,17 @@ const allArticles = [
 class NewsContainer extends Component{
 
     async componentDidMount(){
-        await store.dispatch(actions.recentArticlesReceived(allArticles))
+        // await store.dispatch(actions.recentArticlesReceived(allArticles))
+        let response = await fetchApi('/api/news', "GET");
+        if(!response.error){
+            store.dispatch(actions.recentArticlesReceived(response.data))
+        }else{
+            console.log(response.error)
+        }
     }
 
     render(){
-        const {articles, articlesLoading} = this.props
+        const {articles, articlesLoading, history} = this.props
         let content;
 
         const articlesRendered = articles.map((article,i)=>{
@@ -53,7 +60,7 @@ class NewsContainer extends Component{
             content = (
                 <div className="news-container">
                     <RecentArticlesCard data={articlesRendered}></RecentArticlesCard>
-                    <MonthlyArticlesCard></MonthlyArticlesCard>
+                    <MonthlyArticlesCard history={history}></MonthlyArticlesCard>
                 </div>
 
             )

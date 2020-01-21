@@ -1,7 +1,7 @@
 import {orgsReceived,filterDonationOrgs, orgDetailsReceived, donationOrgsReceived,filterOrgs,clearOrgDetails} from './organizations';
 import {ideasReceived, ideaDetailsReceived, clearIdeaDetails, addComment} from './ideas';
 import {logOutUser} from './authentication';
-import {recentArticlesReceived, newsDetailsReceived} from './news';
+import {recentArticlesReceived, newsDetailsReceived, monthlyArticlesReceived, clearMonthlyArticles} from './news';
 
 export {
     orgsReceived,
@@ -16,5 +16,7 @@ export {
     recentArticlesReceived,
     newsDetailsReceived,
     filterDonationOrgs,
-    addComment
+    addComment,
+    monthlyArticlesReceived,
+    clearMonthlyArticles
 };

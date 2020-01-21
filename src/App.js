@@ -31,7 +31,7 @@ class App extends Component{
           <Route exact path='/submit-idea' component={SubmitIdea}></Route>
           <Route exact path='/news' component={News}></Route>
           <Route exact path='/news/:id' component={NewsItemDetail}></Route>
-          <Route exact path='/monthly/:date' component={MonthlyArticles}></Route>
+          <Route exact path='/monthly/:year/:month' component={MonthlyArticles}></Route>
         </BrowserRouter>
       </Provider>
     )
