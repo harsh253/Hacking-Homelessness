@@ -37,6 +37,8 @@ This will install latest stable version of mongodb
 5. `cd server`
 5. `npm install`
 7. `cd ../`
+8. `cd dumbDB`
+9. `bash mongo_import.sh`
 8. `bash app.sh`
 
 >If you get an error like 'Something is already running on the port 3000'. 
