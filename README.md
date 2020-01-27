@@ -34,12 +34,13 @@ This will install latest stable version of mongodb
 2. `cd hacking-homelessness`
 3. `git checkout final`
 4. `npm install`
-5. `cd server`
-5. `npm install`
-7. `cd ../`
-8. `cd dumbDB`
-9. `bash mongo_import.sh`
-8. `bash app.sh`
+5. `npm install create-react-app`
+6. `cd server`
+7. `npm install`
+8. `cd ../`
+9. `cd dumbDB`
+10. `bash mongo_import.sh`
+11. `bash app.sh`
 
 >If you get an error like 'Something is already running on the port 3000'. 
 
