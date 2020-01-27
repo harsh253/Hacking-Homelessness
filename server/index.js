@@ -4,12 +4,26 @@ const mongoose = require('mongoose')
 const Organization = require('./models/Organization.js')
 const Ideas = require('./models/Ideas.js')
 const News = require('./models/News.js')
+const cors = require('cors');
 
 
 const app = express()
 const port = 4000
 app.use(express.json())
+app.use(cors());
+app.options('*', cors());
 
+const dbURL = `mongodb+srv://harsh253:sanjai45@cluster0-he6n6.mongodb.net/test?retryWrites=true&w=majority`
+
+
+mongoose.connect(dbURL, {useNewUrlParser:true} , function(err){
+    if(err){
+      console.log('Error connecting to: '+ dbURL)
+    }
+    else{
+      console.log('Connected to: '+ dbURL)
+    }
+})
 
 
 app.get('/api/orgs',(req,res)=>{

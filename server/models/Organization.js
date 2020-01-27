@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-require('./../db/mongoose.js')
+// require('./../db/mongoose.js')
 
 const Organization = mongoose.model('Organizations',{
         name: {
