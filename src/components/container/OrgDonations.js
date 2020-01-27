@@ -173,7 +173,9 @@ class OrgDonations extends Component{
                     <FormGroup className="input-field">
                         <Input type="select" onChange={(event) => this.searchOrg(donationOrgs, event)} name="select" className="input-field-style">
                         <option>All Countries</option>
-                        <option>London</option>
+                        <option>United Kingdom</option>
+                        <option>Belgium</option>
+                        <option>USA</option>
                         <option>India</option>
                         </Input>
                     </FormGroup>

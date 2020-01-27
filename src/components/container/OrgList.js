@@ -199,7 +199,9 @@ class OrgList extends Component{
                     <FormGroup className="input-field">
                         <Input id="select-dropdown" onChange={(event)=>this.searchOrg(orgs,event)} type="select" name="select" className="input-field-style">
                         <option>All Countries</option>
-                        <option>London</option>
+                        <option>United Kingdom</option>
+                        <option>Belgium</option>
+                        <option>USA</option>
                         <option>India</option>
                         </Input>
                     </FormGroup>

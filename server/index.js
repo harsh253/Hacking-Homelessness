@@ -51,7 +51,7 @@ app.get('/api/orgs/:id', (req,res)=>{
 app.get('/api/ideas',(req,res)=>{
 	Ideas.find({}).then((ideas)=>{
 		const formattedDate = ideas.map((idea)=>{
-			return idea.created.toLocaleDateString('en-En', {
+			return idea.lastActivity.toLocaleDateString('en-En', {
 				year: 'numeric', month: 'long', day: 'numeric'
 			})
 		})

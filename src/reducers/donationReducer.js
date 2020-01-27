@@ -28,6 +28,7 @@ function populateAllOrgs(state,action){
     var updatedState = Object.assign({}, state)
     updatedState['donationOrgs'] = donationOrgs;
     updatedState['donationOrgsLoading'] = false
+    updatedState['filteredOrgs'] = donationOrgs;
     return updatedState
 }
 

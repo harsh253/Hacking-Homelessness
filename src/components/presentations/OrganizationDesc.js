@@ -25,7 +25,7 @@ class OrganizationDesc extends Component{
                         <div className="org-info">
                             <h6><b>Established</b> : {this.props.data.established}</h6>
                             <h6><b>Location</b> : {this.props.data.location}</h6>
-                            <h6><b>Website</b> : <a href="#">{this.props.data.website}</a></h6>
+                            <h6><b>Website</b> : <a target="blank" href={this.props.data.website}>{this.props.data.website}</a></h6>
                         </div>
                         <div className="org-desc">
                             <h6><b>Description</b> :</h6>
