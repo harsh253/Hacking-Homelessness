@@ -38,7 +38,7 @@ This will install latest stable version of mongodb
 6. `cd server`
 7. `npm install`
 8. `cd ../`
-9. `cd dumbDB`
+9. `cd dumpDB`
 10. `bash mongo_import.sh`
 11. `cd server`
 12. `nodemon`
