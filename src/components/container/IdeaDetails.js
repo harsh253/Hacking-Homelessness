@@ -34,7 +34,7 @@ class IdeaDetails extends Component{
     async componentDidMount(){
         const ideaId = this.props.match.params.id
 
-        let response = await fetchApi(`/api/idea/${ideaId}`, "GET");
+        let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/idea/${ideaId}`, "GET");
         if(!response.error){
             store.dispatch(actions.ideaDetailsReceived(response.data, response.data.comments, response.data.replies))
         }else{

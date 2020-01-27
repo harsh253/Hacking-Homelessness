@@ -38,7 +38,7 @@ class NewsContainer extends Component{
 
     async componentDidMount(){
         // await store.dispatch(actions.recentArticlesReceived(allArticles))
-        let response = await fetchApi('/api/news', "GET");
+        let response = await fetchApi('http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/news', "GET");
         if(!response.error){
             store.dispatch(actions.recentArticlesReceived(response.data))
         }else{

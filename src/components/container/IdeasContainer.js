@@ -49,7 +49,7 @@ import fetchApi from '../../utilities/fetchApi';
 class IdeasContainer extends Component{
 
     async componentDidMount(){
-        let response = await fetchApi('/api/ideas', "GET");
+        let response = await fetchApi('http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/ideas', "GET");
         if(!response.error){
             console.log(response.formattedDate)
             store.dispatch(actions.ideasReceived(response.data, response.formattedDate))

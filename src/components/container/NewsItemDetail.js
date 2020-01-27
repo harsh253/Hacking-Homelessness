@@ -27,7 +27,7 @@ class NewsItemDetail extends Component{
     async componentDidMount(){
         // await store.dispatch(actions.newsDetailsReceived(newsDetails))
         const newsId = this.props.match.params.id;
-        let response = await fetchApi(`/api/news/${newsId}`, "GET");
+        let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/news/${newsId}`, "GET");
         if(!response.error){
             store.dispatch(actions.newsDetailsReceived(response.data, response.formattedDate))
         }else{

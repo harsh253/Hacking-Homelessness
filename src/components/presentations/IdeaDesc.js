@@ -56,7 +56,7 @@ class IdeaDesc extends Component{
                 })
                 // window.location.reload()
             }else{
-                let response = await fetchApi(`/api/idea/reply/${id}`,"POST", this.state.formDetails, localStorage.getItem('accessToken'))
+                let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/idea/reply/${id}`,"POST", this.state.formDetails, localStorage.getItem('accessToken'))
                 if(!response.error){
                     store.dispatch(actions.addComment(this.state.formDetails.reply,this.state.formDetails.username))
                     this.setState({

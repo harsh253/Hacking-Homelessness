@@ -11,7 +11,7 @@ class OrganizationDetail extends Component{
 
     async componentDidMount(){
         const orgId = this.props.match.params.id
-        let response = await fetchApi(`/api/orgs/${orgId}`, "GET");
+        let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/orgs/${orgId}`, "GET");
         if(!response.error){
             console.log(response.data)
             store.dispatch(actions.orgDetailsReceived(response.data))

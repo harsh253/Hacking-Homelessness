@@ -15,7 +15,7 @@ class MonthlyArticles extends Component{
     async componentDidMount(){
         const year = this.props.match.params.year;
         const month = this.props.match.params.month;
-        let response = await fetchApi(`/api/news/${year}/${month}`, "GET")
+        let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/news/${year}/${month}`, "GET")
         if(!response.error){
             store.dispatch(actions.monthlyArticlesReceived(response.data))
         }else{

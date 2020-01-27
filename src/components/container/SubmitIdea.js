@@ -37,7 +37,7 @@ class SubmitIdea extends Component{
 
     async submitIdea(e){
         e.preventDefault()
-        await fetchApi('/api/submitIdea',"POST", this.state.formDetails, localStorage.getItem('accessToken'))
+        await fetchApi('http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/submitIdea',"POST", this.state.formDetails, localStorage.getItem('accessToken'))
         this.props.history.push('/ideas')
     }
 

@@ -115,7 +115,7 @@ class OrgDonations extends Component{
     }
 
     async componentDidMount(){
-        let response = await fetchApi('/api/orgs', "GET");
+        let response = await fetchApi('http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/orgs', "GET");
         if(!response.error){
             await store.dispatch(actions.donationOrgsReceived(response.data))
         }else{

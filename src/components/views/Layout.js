@@ -25,7 +25,6 @@ import {GoogleLogin} from 'react-google-login';
 import {connect} from 'react-redux';
 import store from '../../store/store';
 import * as actions from '../../actions';
-import { NavLink as RRNavLink } from 'react-router-dom';
 
 class Layout extends Component {
     constructor(props){
