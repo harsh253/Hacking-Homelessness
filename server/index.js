@@ -34,7 +34,6 @@ app.get('/api/orgs',(req,res)=>{
 			status: 200,
 			data: orgs
 		})
-
 	}).catch((e)=>{
 		res.json({
 			status:500,

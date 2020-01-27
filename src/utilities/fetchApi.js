@@ -33,9 +33,19 @@ async function fetchApi(url, method, formData=null, accessToken="notRequired", o
             }
         }else{
             try{
-                let response = await fetch(url);
+                let response = await fetch(
+                    url,
+                    {
+                        method,
+                        headers : { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    }
+                )
                 if(response && response.ok){
                     let data =  await response.json()
+                    console.log(data)
                     return data
                 }else{
                     let error = await response
@@ -84,7 +94,16 @@ async function fetchApi(url, method, formData=null, accessToken="notRequired", o
             }
         }else{
             try{
-                let response = await fetch(url);
+                let response = await fetch(
+                    url,
+                    {
+                        method,
+                        headers : { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        }
+                    }
+                )
                 if(response && response.ok){
                     let data =  await response.json()
                     return data
