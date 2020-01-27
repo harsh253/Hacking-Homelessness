@@ -40,7 +40,10 @@ This will install latest stable version of mongodb
 8. `cd ../`
 9. `cd dumbDB`
 10. `bash mongo_import.sh`
-11. `bash app.sh`
+11. `cd server`
+12. `nodemon`
+13.  Open a new terminal and navigate to the directory hacking-homelessness. `cd hacking-homelessness`
+14. `yarn start`
 
 >If you get an error like 'Something is already running on the port 3000'. 
 
