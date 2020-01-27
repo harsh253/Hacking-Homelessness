@@ -20,7 +20,8 @@ const Ideas = mongoose.model('Ideas',{
 		default: new Date()
     },
 	lastActivity:{
-		type:Date
+		type:Date,
+		default: new Date()
 	},
 	description:{
 		type:Array,

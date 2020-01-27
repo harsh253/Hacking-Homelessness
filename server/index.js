@@ -64,8 +64,9 @@ app.get('/api/ideas',(req,res)=>{
 	}).catch((e)=>{
 		res.json({
 			status:500,
-			error:e
+			error:'as'
 		})
+		console.log(e)
 	})
 })
 
@@ -148,12 +149,12 @@ app.post('/api/submitIdea',(req,res)=>{
 	newIdea.save().then(()=>{
 		res.json({
 			status:200
+	})
 	}).catch((e)=>{
 		res.json({
 			error:e
 		})
 	})
-})
 })
 
 app.post('/api/idea/reply/:id',(req,res)=>{
