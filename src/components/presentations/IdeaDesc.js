@@ -123,7 +123,18 @@ class IdeaDesc extends Component{
                         </Form>
                             :
                         <Form> 
-                            <Button type="button" onClick={()=>this.toggleModal()} className="reply-btn">Sign in to reply</Button>
+                            {/* <Button type="button" onClick={()=>this.toggleModal()} className="reply-btn">Sign in to reply</Button> */}
+                            <GoogleLogin
+                            clientId="491014928615-punuriroth7d8l3g5r8d0c83gu2keatf.apps.googleusercontent.com"
+                            buttonText="LOGIN WITH GOOGLE"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            render={renderProps => (
+                                <Button onClick={renderProps.onClick} disabled={renderProps.disabled} className="reply-btn">
+                                {/* <FontAwesomeIcon className="google-login-icon" icon={['fab', 'google']}></FontAwesomeIcon> */}
+                                Sign in to reply
+                                </Button>
+                            )}/>
                         </Form>
                     }
                     
@@ -137,7 +148,7 @@ class IdeaDesc extends Component{
                         </div>
                     </div>
                 </div>
-                <Modal centered isOpen={this.state.modal} toggle={this.toggleModal} className="text-center">
+                {/* <Modal centered isOpen={this.state.modal} toggle={this.toggleModal} className="text-center">
             <ModalHeader toggle={this.toggleModal}>Log in</ModalHeader>
             <ModalBody>
               Sign in using
@@ -173,7 +184,7 @@ class IdeaDesc extends Component{
             <ModalFooter>
               <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
             </ModalFooter>
-          </Modal>
+          </Modal> */}
             </div>
         )
     }

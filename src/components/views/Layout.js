@@ -12,10 +12,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Modal, 
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
   Button
 } from 'reactstrap';
 import '../../styles/layout.css'
@@ -106,11 +102,23 @@ class Layout extends Component {
                   <h6 style={{cursor:'pointer'}}onClick={this.logout}>Logout</h6>
                 </span>
                 
-              </div>):<NavLink style={{paddingLeft:0, paddingRight:0, color:'#007bff'}} onClick={()=>this.toggleModal()}>Log In</NavLink>}
+              </div>):<NavLink style={{paddingLeft:0, paddingRight:0, color:'#007bff'}} onClick={()=>this.toggleModal()}>
+                <GoogleLogin
+                  clientId="491014928615-punuriroth7d8l3g5r8d0c83gu2keatf.apps.googleusercontent.com"
+                  buttonText="LOGIN WITH GOOGLE"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  render={renderProps => (
+                    <Button onClick={renderProps.onClick} disabled={renderProps.disabled} className="google-login-btn">
+                      {/* <FontAwesomeIcon className="google-login-icon" icon={['fab', 'google']}></FontAwesomeIcon> */}
+                      Log in
+                    </Button>
+                  )}
+                /></NavLink>}
               
             </Collapse>
           </Navbar>
-          <Modal centered isOpen={this.state.modal} toggle={this.toggleModal} className="text-center">
+          {/* <Modal centered isOpen={this.state.modal} toggle={this.toggleModal} className="text-center">
             <ModalHeader toggle={this.toggleModal}>Log in</ModalHeader>
             <ModalBody>
               Sign in using
@@ -146,7 +154,7 @@ class Layout extends Component {
             <ModalFooter>
               <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
             </ModalFooter>
-          </Modal>
+          </Modal> */}
         </div>
       )
     }

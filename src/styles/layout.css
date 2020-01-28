@@ -29,8 +29,9 @@
 }
 
 .google-login-btn{
-    background-color: #db4437 !important;
-    border-color: #db4437 !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #60DDC9 !important;
 }
 
 .fb-login-icon, .google-login-icon{
