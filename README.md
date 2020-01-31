@@ -32,18 +32,17 @@ This will install latest stable version of mongodb
 
 1. `git clone https://github.com/harsh253/Hacking-Homelessness.git`
 2. `cd hacking-homelessness`
-3. `git checkout final`
-4. `npm install`
-5. `npm install create-react-app`
-6. `cd server`
-7. `npm install`
-8. `cd ../`
-9. `cd dumpDB`
-10. `bash mongo_import.sh`
-11. `cd server`
-12. `nodemon`
-13.  Open a new terminal and navigate to the directory hacking-homelessness. `cd hacking-homelessness`
-14. `yarn start`
+3. `npm install`
+4. `npm install create-react-app`
+5. `cd server`
+6. `npm install`
+7. `cd ../`
+8. `cd dumpDB`
+9. `bash mongo_import.sh`
+10. `cd server`
+11. `nodemon`
+12.  Open a new terminal and navigate to the directory hacking-homelessness. `cd hacking-homelessness`
+13. `yarn start`
 
 >If you get an error like 'Something is already running on the port 3000'. 
 
