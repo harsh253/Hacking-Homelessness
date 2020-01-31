@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**You can check out the working demo at http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:3000**
 
 ### Before setting up locally make sure you have the following installed
 
