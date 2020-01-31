@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Table} from 'reactstrap';
-import OrganizationCard from './OrganizationCard';
 
 class OrganizationTable extends Component{
     render(){
@@ -11,8 +10,8 @@ class OrganizationTable extends Component{
                 <tr key={i}>
                     <td>{org.name}</td>
                     <td>{org.location}</td>
-                    <td><a href="#">{org.website}</a></td>
-                    <td><a href={org.donation}>Donate</a></td>
+                    <td><a target="blank" href={org.website}>{org.website}</a></td>
+                    <td><a target="blank" href={org.donation}>Donate</a></td>
                 </tr>
             )
         })
@@ -22,7 +21,7 @@ class OrganizationTable extends Component{
 
 
         return(
-            <Table className="org-table" hover responsive>
+            <Table className="org-table" borderless responsive>
                 <thead>
                     <tr>
                     <th>Organization</th>

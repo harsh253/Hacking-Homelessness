@@ -1,37 +1,77 @@
 .custom-card{
-    border: 1px solid lightgray;
+    /* border: 0.5px solid #fff; */
     padding: 10px 25px;
     max-width: 378px;
+    /* max-width: 32%; */
     margin-right: 15px;
-    margin-top: 30px;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
+    /* width: 350px */
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
+    background-color: #172A45;
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
 }
 
+.custom-card>h3 , .custom-news-card>h4{
+    color: rgb(226, 234, 248);
+    font-weight: bold;
+}
+
+
 .custom-news-card{
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     padding: 10px 25px;
     width: 500px;
     margin-right: 20px;
     margin-top: 30px;
     margin-bottom: 10px;
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
+    background-color: #172A45;
+    transition: transform 0.3s;
+    transition-timing-function: ease-in-out;
+    border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
+}
+
+.custom-news-card>h4{
+    color:rgb(226, 234, 248)
+    
 }
 
 .custom-card:hover{
-    animation-name: card;
-    animation-duration: 0.2s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards
+    transform: translateY(-5px);
 }
 
-@keyframes card {
-    from {box-shadow: 0 0 0 0 transparent;}
-    to {box-shadow: 0 0 3px 1px lightgray;;}
-  }
+.article-card-container{
+    max-width: 800px;
+    margin: 20px auto
+}
+
+.custom-article-card{
+    padding: 10px 25px;
+    margin-right: 15px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    /* cursor: pointer; */
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.1);
+    background-color: #172A45;
+    border-radius: 5px;
+    border-bottom: 1px solid #60ddc9
+}
+
+.custom-article-card>p>a{
+    color: #60ddc9
+}
+
 
 .card-text{
     margin-top: 20px;
-    /* height: 165px; */
+    /* - */
+    color: rgb(156, 178, 214);
 }
 
 .card-link{
@@ -42,26 +82,20 @@
 
 .footer{
     margin-top: 20px;
+    color: rgb(196, 213, 243);
 }
 
-@media screen and (max-width: 1000px){
-    .custom-card{
-        max-width: 1200px;
-        /* margin-left: 15px; */
-    }
-}
 
-@media screen and (max-width: 1150px){
-    .custom-card{
-        max-width: 340px;
-        /* margin-left: 15px; */
-    }
-}
-
-@media screen and (max-width: 992px){
+/* @media screen and (max-width: 992px){
     body{
         font-size: 16px !important;
     }
+
+        .page-container{
+    margin-left: 15px;
+    margin-right: 15px;
+    }
+
 }
 
 @media screen and (min-width: 1300px){
@@ -69,4 +103,10 @@
         margin-top: 20px;
         height: 165px;
     }
-}
+        
+    
+        .card-container{
+    justify-content: center;
+    }
+
+} */

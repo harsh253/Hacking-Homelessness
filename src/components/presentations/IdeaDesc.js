@@ -1,64 +1,103 @@
 import React, {Component} from 'react';
-import {Input, Button} from 'reactstrap';
+import {Input, Button, Form,Modal, 
+    ModalHeader,
+    ModalBody,
+    ModalFooter,} from 'reactstrap';
+import {connect} from 'react-redux';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import {GoogleLogin} from 'react-google-login';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import fetchApi from '../../utilities/fetchApi';
+import store from '../../store/store';
+import * as actions from '../../actions';
 
 class IdeaDesc extends Component{
 
     constructor(){
         super();
+        this.toggleModal = this.toggleModal.bind(this);
         this.state = {
-            boxToggle: 'box-toggle',
-            btnText: 'Reply',
-            toggleCancel: 'cancel-toggle'
+            formDetails:{
+                reply: '',
+                username: localStorage.getItem('name'),
+                date_now: new Date()
+            },
+            error:{
+                message:''
+            },
+            modal:false,
         }
     }
 
-    async openTextBox(){
-        if(this.state.boxToggle === 'box-toggle'){
-            this.setState({
-                boxToggle: '',
-                btnText: 'Post',
-                toggleCancel: ''
-            })
-        }else{
-            // await alert('as'); call fetch here
-            this.setState({
-                boxToggle: 'box-toggle',
-                btnText: 'Reply',
-                toggleCancel: 'cancel-toggle'
-            })
-
-        }
+    toggleModal(){
+        this.setState({
+          modal: !this.state.modal,
+        })
     }
 
-    cancelPost(){
-        if(this.state.toggleCancel === ''){
-            this.setState({
-                boxToggle: 'box-toggle',
-                btnText: 'Reply',
-                toggleCancel: 'cancel-toggle'
-            })
-        }else{
-            this.setState({
-                boxToggle: '',
-                btnText: 'Post',
-                toggleCancel: 'cancel-toggle'
-            })
+    handleChange(e){
+        this.setState({
+            formDetails:{
+                reply : e.target.value,
+                username: localStorage.getItem('name'),
+                date_now: new Date()
+            }
+        })
+    }
 
+     submitReply(id){
+        return async e=>{
+            e.preventDefault()
+            if(!this.state.formDetails.reply.trim()){
+                this.setState({
+                    error:{
+                        message: 'Reply can\'t\ be empty'
+                    }
+                })
+                // window.location.reload()
+            }else{
+                let response = await fetchApi(`http://ec2-3-6-76-229.ap-south-1.compute.amazonaws.com:4000/api/idea/reply/${id}`,"POST", this.state.formDetails, localStorage.getItem('accessToken'))
+                if(!response.error){
+                    store.dispatch(actions.addComment(this.state.formDetails.reply,this.state.formDetails.username))
+                    this.setState({
+                        formDetails:{
+                            reply: '',
+                            username: localStorage.getItem('name'),
+                            date_now: new Date()
+                        }
+                    })
+                }
+
+            }
         }
     }
 
     render(){
-        let {data} = this.props
+        const responseFacebook = (response) => {
+            console.log(response);
+              localStorage.setItem('accessToken', response.accessToken)
+              localStorage.setItem('name', response.name)
+              window.location.reload()
+    
+          }
+      
+          const responseGoogle = (response) => {
+            console.log(response);
+            localStorage.setItem('accessToken', response.accessToken)
+            localStorage.setItem('name', response.profileObj.name)
+            window.location.reload()
+          }  
+        let {data,name,accessToken,comments, replies} = this.props
         const description = data.description.map((para,i)=>{
             return(
                 <p key={i}>{para}</p>
             )
         })
-        const comments = data.comments.map((comment,i)=>{
+        const commentsList = comments.map((comment,i)=>{
             return(
                 <div key={i}>
                     <h5>{comment.username}</h5>
-                    <p>{comment.body}</p>
+                    <p>{comment.reply}</p>
                 </div>
             )
         })
@@ -73,29 +112,91 @@ class IdeaDesc extends Component{
                         </div>
                         <div className="idea-description-container">
                             {description}
-                            <span>{data.replies} replies</span>
+                            <span>{replies} replies</span>
                         </div>
                     </div>
-                    <div className={"reply-box-container " + this.state.boxToggle} >
-                        <Input type="textarea"></Input>
-                    </div>
-                    <div className={"reply-btn-container"}>
-                        <small onClick={()=>this.cancelPost()} className={"cancel "+ this.state.toggleCancel}>Cancel</small>
-                        <Button type="button" onClick={()=>this.openTextBox()} className="reply-btn" color="primary">{this.state.btnText}</Button>
-                    </div>
+                    {accessToken && name ? 
+                        <Form onSubmit={this.submitReply(data._id)}>
+                            <Input type="textarea" className={"reply-box-container reply-box"} required value={this.state.formDetails.reply} name="comment" onChange={this.handleChange.bind(this)}></Input>
+                            <Button type="submit" id="reply-btn" className="reply-btn" color="primary">Reply As {name}</Button>
+                            <p>{this.state.error.message}</p>
+                        </Form>
+                            :
+                        <Form> 
+                            {/* <Button type="button" onClick={()=>this.toggleModal()} className="reply-btn">Sign in to reply</Button> */}
+                            <GoogleLogin
+                            clientId="491014928615-punuriroth7d8l3g5r8d0c83gu2keatf.apps.googleusercontent.com"
+                            buttonText="LOGIN WITH GOOGLE"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            render={renderProps => (
+                                <Button onClick={renderProps.onClick} disabled={renderProps.disabled} className="reply-btn">
+                                {/* <FontAwesomeIcon className="google-login-icon" icon={['fab', 'google']}></FontAwesomeIcon> */}
+                                Sign in to reply
+                                </Button>
+                            )}/>
+                        </Form>
+                    }
+                    
                 </div>
 
                 <div className="comments-description">
                     <h4>Comments</h4>
                     <div className="comment-detail-container">
                         <div className="comments-container">
-                            {comments}
+                            {commentsList}
                         </div>
                     </div>
                 </div>
+                {/* <Modal centered isOpen={this.state.modal} toggle={this.toggleModal} className="text-center">
+            <ModalHeader toggle={this.toggleModal}>Log in</ModalHeader>
+            <ModalBody>
+              Sign in using
+              <div className="login-services">
+                
+                <FacebookLogin 
+                  appId="1043474982652148" 
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                  isMobile={false}
+                  render={renderProps => (
+                    <Button onClick={renderProps.onClick} className="fb-login-btn">
+                      <FontAwesomeIcon className="fb-login-icon" icon={['fab', 'facebook-f']}></FontAwesomeIcon>
+                      Facebook
+                    </Button>
+                    
+                  )}
+                />
+                <GoogleLogin
+                  clientId="491014928615-punuriroth7d8l3g5r8d0c83gu2keatf.apps.googleusercontent.com"
+                  buttonText="LOGIN WITH GOOGLE"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  render={renderProps => (
+                    <Button onClick={renderProps.onClick} disabled={renderProps.disabled} className="google-login-btn">
+                      <FontAwesomeIcon className="google-login-icon" icon={['fab', 'google']}></FontAwesomeIcon>
+                      Google
+                    </Button>
+                  )}
+                />
+              </div>
+            </ModalBody>
+            <ModalFooter>
+              <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
+            </ModalFooter>
+          </Modal> */}
             </div>
         )
     }
 }
 
-export default IdeaDesc;
+function mapStateToProps(state){
+    return{
+        name: state.authReducer.name,
+        accessToken: state.authReducer.accessToken,
+        comments: state.ideasReducer.comments,
+        replies: state.ideasReducer.replies
+    }
+}
+
+export default connect(mapStateToProps)(IdeaDesc);

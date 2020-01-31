@@ -4,9 +4,55 @@
 
 .nav-link{
     cursor: pointer;
+    color: rgb(226, 234, 248)  !important;
+    font-size: 14px !important;
 }
 
+.navbar-toggler{
+    border-color: #60ddc9 !important;
+    background-color: transparent !important;
+}
 
-@media screen and (max-width: 992px){
+.login-services{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.login-services>button{
+    margin-right: 20px;
+}
+
+.fb-login-btn{
+    background-color: #3b5998 !important;
+    border-color: #3b5998 !important;
+}
+
+.google-login-btn{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #60DDC9 !important;
+}
+
+.fb-login-icon, .google-login-icon{
+    margin-right: 5px;
+}
+
+.dropdown-menu{
+    background-color: #0A192F !important;
+    border-color: white !important;
+}
+
+.dropdown-item{
+    color: rgb(226, 234, 248) !important
+}
+
+.dropdown-item:hover{
+    background-color: transparent !important;
+    color: #60ddc9  !important
+}
+
+@media screen and (min-width: 992px){
+
 
 }

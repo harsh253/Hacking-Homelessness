@@ -12,6 +12,9 @@ import Donation from './components/views/Donation';
 import Ideas from './components/views/Ideas';
 import IdeaDetails from './components/container/IdeaDetails'
 import News from './components/views/News'
+import SubmitIdea from './components/container/SubmitIdea'
+import NewsItemDetail from './components/container/NewsItemDetail';
+import MonthlyArticles from './components/container/MonthlyArticles';
 
 library.add(fab)
 
@@ -21,11 +24,14 @@ class App extends Component{
       <Provider store={store}>
         <BrowserRouter>
           <Route exact path='/' component = {Organizations}></Route>
-          <Route path='/organization/:id' component={OrganizationDetail}></Route>
-          <Route path='/donate' component={Donation}></Route>
+          <Route exact path='/organization/:id' component={OrganizationDetail}></Route>
+          <Route exact path='/donate' component={Donation}></Route>
           <Route exact path='/ideas' component={Ideas}></Route>
-          <Route path='/ideas/:id' component={IdeaDetails}></Route>
+          <Route exact path='/ideas/:id' component={IdeaDetails}></Route>
+          <Route exact path='/submit-idea' component={SubmitIdea}></Route>
           <Route exact path='/news' component={News}></Route>
+          <Route exact path='/news/:id' component={NewsItemDetail}></Route>
+          <Route exact path='/monthly/:year/:month' component={MonthlyArticles}></Route>
         </BrowserRouter>
       </Provider>
     )
